@@ -193,13 +193,20 @@ router.put('/pages/:id', verifyAdmin, (req, res) => {
     }
 
     if (postData) {
+      let found = false;
       const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.json'));
       for (const f of files) {
         const post = readJson(path.join(POSTS_DIR, f));
         if (post.id === req.params.id) {
           writeJson(path.join(POSTS_DIR, f), { ...post, ...postData });
+          found = true;
           break;
         }
+      }
+      // If no existing post file, create one
+      if (!found) {
+        const postFile = path.join(POSTS_DIR, `${postData.slug || postData.id || req.params.id}.json`);
+        writeJson(postFile, postData);
       }
     }
 

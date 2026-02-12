@@ -62,6 +62,70 @@ router.get('/posts', (req, res) => {
   }
 });
 
+// Get all posts for admin (no category filter)
+router.get('/admin/posts', verifyAdmin, (_req, res) => {
+  try {
+    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.json'));
+    const posts = files.map((f) => readJson(path.join(POSTS_DIR, f)));
+    posts.sort((a: { date: string }, b: { date: string }) =>
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+    res.json(posts);
+  } catch {
+    res.json([]);
+  }
+});
+
+// Create a new post only (admin only)
+router.post('/admin/posts', verifyAdmin, (req, res) => {
+  try {
+    const postData = req.body;
+    const postFile = path.join(POSTS_DIR, `${postData.slug || postData.id}.json`);
+    writeJson(postFile, postData);
+    res.json({ success: true });
+  } catch {
+    res.status(500).json({ error: 'Failed to create post' });
+  }
+});
+
+// Update a single post (admin only)
+router.put('/admin/posts/:id', verifyAdmin, (req, res) => {
+  try {
+    const postData = req.body;
+    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.json'));
+    for (const f of files) {
+      const post = readJson(path.join(POSTS_DIR, f));
+      if (post.id === req.params.id) {
+        writeJson(path.join(POSTS_DIR, f), { ...post, ...postData });
+        return res.json({ success: true });
+      }
+    }
+    // If not found, create new
+    const postFile = path.join(POSTS_DIR, `${postData.slug || postData.id || req.params.id}.json`);
+    writeJson(postFile, postData);
+    res.json({ success: true });
+  } catch {
+    res.status(500).json({ error: 'Failed to update post' });
+  }
+});
+
+// Delete a single post (admin only)
+router.delete('/admin/posts/:id', verifyAdmin, (req, res) => {
+  try {
+    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.json'));
+    for (const f of files) {
+      const post = readJson(path.join(POSTS_DIR, f));
+      if (post.id === req.params.id) {
+        fs.unlinkSync(path.join(POSTS_DIR, f));
+        return res.json({ success: true });
+      }
+    }
+    res.status(404).json({ error: 'Post not found' });
+  } catch {
+    res.status(500).json({ error: 'Failed to delete post' });
+  }
+});
+
 // Get single post by ID
 router.get('/posts/:id', (req, res) => {
   try {

@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import AdminLogin from './admin/AdminLogin';
 import AdminDashboard from './admin/AdminDashboard';
 import AdminPageEditor from './admin/AdminPageEditor';
+import AdminPostEditor from './admin/AdminPostEditor';
 import AdminRoute from './admin/AdminRoute';
 
 export default function App() {
@@ -30,6 +31,14 @@ export default function App() {
           element={
             <AdminRoute>
               <AdminPageEditor />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/post-editor/:id?"
+          element={
+            <AdminRoute>
+              <AdminPostEditor />
             </AdminRoute>
           }
         />

@@ -1,0 +1,23 @@
+{
+  "id": "cemetery",
+  "slug": "cemetery",
+  "title": {
+    "he": "פרויקט שיקום בית הקברות:",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "פרויקט שיקום בית הקברות:",
+    "en": ""
+  },
+  "content": {
+    "he": "<h1>פרויקט שיקום בית הקברות:</h1>\n<h2>איתור מצבות:</h2>",
+    "en": ""
+  },
+  "images": [],
+  "videos": [],
+  "parentPage": "",
+  "imageDisplayMode": "gallery"
+}

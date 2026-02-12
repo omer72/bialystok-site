@@ -1,0 +1,25 @@
+{
+  "id": "about-extra",
+  "slug": "about-extra",
+  "title": {
+    "he": "אודות הארגון",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "",
+    "en": ""
+  },
+  "content": {
+    "he": "<h2>:(תקציר הטכס (קטעי וידאו</h2>\n<h2>:נאום יו\"ר&nbsp;הארגון</h2>\n<h2>&nbsp;:מצגת שהוצגה בטכס&nbsp;</h2>\n<h2>&nbsp;:מצגת שהוצגה בחדר הנצחה&nbsp;</h2>",
+    "en": ""
+  },
+  "images": [
+    "https://static.wixstatic.com/media/5eeb4e_99448cee448b48469c4b6dc2086f2f77~mv2.jpg/v1/fill/w_391,h_558,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_99448cee448b48469c4b6dc2086f2f77~mv2.jpg"
+  ],
+  "videos": [],
+  "parentPage": "about",
+  "imageDisplayMode": "gallery"
+}

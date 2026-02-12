@@ -1,7 +1,10 @@
 {
   "id": "yitzhak-broida",
   "slug": "yitzhak-broida",
-  "title": { "he": "יצחק ברוידה", "en": "Yitzhak Broida" },
+  "title": {
+    "he": "יצחק ברוידה",
+    "en": "Yitzhak Broida"
+  },
   "category": "survivors",
   "date": "2025-03-04",
   "author": "ron-london",
@@ -15,5 +18,6 @@
   },
   "images": [],
   "videos": [],
-  "parentPage": "survivor-stories"
+  "parentPage": "survivor-stories",
+  "imageDisplayMode": "gallery"
 }

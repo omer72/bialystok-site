@@ -1,0 +1,23 @@
+{
+  "id": "museum",
+  "slug": "museum",
+  "title": {
+    "he": "המוזאון היהודי בביאליסטוק",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "",
+    "en": ""
+  },
+  "content": {
+    "he": "",
+    "en": ""
+  },
+  "images": [],
+  "videos": [],
+  "parentPage": "",
+  "imageDisplayMode": "gallery"
+}

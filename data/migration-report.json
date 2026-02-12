@@ -1,0 +1,401 @@
+{
+  "timestamp": "2026-02-12T16:54:20.565Z",
+  "source": "https://www.bialystokvicinityexpatsisrael.org.il",
+  "totalPages": 49,
+  "success": 49,
+  "failed": 0,
+  "pages": [
+    {
+      "id": "about",
+      "title": "",
+      "category": "content",
+      "contentLength": 495,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "about-extra",
+      "title": "",
+      "category": "content",
+      "contentLength": 3480,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "goals",
+      "title": "",
+      "category": "content",
+      "contentLength": 3740,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "org-structure",
+      "title": "",
+      "category": "content",
+      "contentLength": 4708,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "milestones",
+      "title": "",
+      "category": "content",
+      "contentLength": 10457,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "history",
+      "title": "תולדות היהודים בביאליסטוק:",
+      "category": "content",
+      "contentLength": 2556,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "maps",
+      "title": "(הקלק על התמונות כדי להגדיל)",
+      "category": "content",
+      "contentLength": 3831,
+      "imageCount": 6,
+      "videoCount": 0
+    },
+    {
+      "id": "museum",
+      "title": "",
+      "category": "content",
+      "contentLength": 495,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "cemetery",
+      "title": "פרויקט שיקום בית הקברות:",
+      "category": "content",
+      "contentLength": 1839,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-book",
+      "title": "אתר ספר הזיכרון לביאליסטוק:",
+      "category": "content",
+      "contentLength": 1176,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "videos",
+      "title": "סרטון על החיים היהודיים בביאליסטוק לפני מלחמת העולם ה-2 (1939):",
+      "category": "content",
+      "contentLength": 1212,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "related-sites",
+      "title": "אתר לזכר יהדות רדזילוב (במחוז ביאליסטוק):",
+      "category": "content",
+      "contentLength": 1190,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "mordechai-tenenbaum",
+      "title": "404",
+      "category": "people",
+      "contentLength": 0,
+      "imageCount": 0,
+      "videoCount": 0
+    },
+    {
+      "id": "rabbi-mohilever",
+      "title": "404",
+      "category": "people",
+      "contentLength": 0,
+      "imageCount": 0,
+      "videoCount": 0
+    },
+    {
+      "id": "shlomo-kaplansky",
+      "title": "שלמה קפלנסקי",
+      "category": "people",
+      "contentLength": 20772,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "nahum-tzemach",
+      "title": "נחום צמח",
+      "category": "people",
+      "contentLength": 25203,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "elazar-sukenik",
+      "title": "פרופ׳ אלעזר ליפא סוקניק",
+      "category": "people",
+      "contentLength": 22832,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "dr-zamenhof",
+      "title": "404",
+      "category": "people",
+      "contentLength": 0,
+      "imageCount": 0,
+      "videoCount": 0
+    },
+    {
+      "id": "yitzhak-shamir",
+      "title": "יצחק שמיר",
+      "category": "people",
+      "contentLength": 16307,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "moshe-hassid",
+      "title": "משה חסיד",
+      "category": "people",
+      "contentLength": 4297,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "shmuel-pisar",
+      "title": "פרופסור שמואל פיזאר",
+      "category": "people",
+      "contentLength": 10908,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "yosef-chazanovitz",
+      "title": "ד״ר יוסף חזנוביץ",
+      "category": "people",
+      "contentLength": 9264,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "yitzhak-malmed",
+      "title": "יצחק מלמד",
+      "category": "people",
+      "contentLength": 4605,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "yosef-makovsky",
+      "title": "יוסף מקובסקי",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "mina-kizelstein-doron",
+      "title": "מינה קיזלשטיין-דורון",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "yaakov-makovsky",
+      "title": "יעקוב מקובסקי",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "natan-adler",
+      "title": "נתן אדלר",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "shamai-kizelstein",
+      "title": "שמאי קיזלשטיין",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "id": "ruth-maltzman",
+      "title": "רות מלצמן",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "ari-avraham",
+      "title": "ארי אברהם",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 6,
+      "videoCount": 0
+    },
+    {
+      "id": "pinchas-natan-adler",
+      "title": "פנחס אדלר",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "michael-flicker",
+      "title": "מיכאל פליקר",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "simcha-london",
+      "title": "שמחה לונדון",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "shraga-faivel-kagan",
+      "title": "שרגא פייבל כגן",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 10,
+      "videoCount": 0
+    },
+    {
+      "id": "zeev-balgli",
+      "title": "זאב בלגלי",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "eliash-baumatz",
+      "title": "אליאש באומץ",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "children-of-bialystok",
+      "title": "ילדי ביאליסטוק",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "yitzhak-broida",
+      "title": "יצחק ברוידה",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "eva-kartzovska",
+      "title": "אווה קרצובסקה",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "id": "mordechai-danin",
+      "title": "הסופר מרדכי דנין",
+      "category": "survivors",
+      "contentLength": 495,
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-82",
+      "title": "",
+      "category": "events",
+      "contentLength": 2544,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-81",
+      "title": "",
+      "category": "events",
+      "contentLength": 2482,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-80",
+      "title": "",
+      "category": "events",
+      "contentLength": 2544,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-2022",
+      "title": "ההזמנה לטכס:",
+      "category": "events",
+      "contentLength": 3315,
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-74",
+      "title": "מצגת לטכס 2017:",
+      "category": "events",
+      "contentLength": 1834,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "memorial-poland-2023",
+      "title": "ב-5.2.2023 , כמו בכל שנה, התקיימה עצרת בביאליסטוק (פולין)  להנצחת קורבנות האקציה הראשונה בגטו ביאליסטוק שנערכה בין 5 ל-12 בפברואר 1943.\n\nלהלן בקיצור תרגום הפרסומים בנושא שהופיעו בעיתונות בביאליסטוק:\nבשעה 16.00 הייתה פגישה אליה הגיעו 120 אנשים בעיקר צעירים. הפגישה הוקדשה לספרו של פרופ. אדם דוברונסקי \"יהודי ביאליסטוק, תמונות זיכרון\". הפגישה התקיימה במרכז התרבות בביאליסטוק על שמו של לודוויג זאמנהוף.\nבשעה 17.30 היה מצעד של 80 לפידים שהחל במקום בו היה שער הכניסה לגטו. 80 לפידים כמספר השנים שעברו מאז פרוץ המרד וחיסול הגטו.  המצעד המשיך עד המצבה למורדי גטו ביאליסטוק מלווה במוסיקה. שם היו מספר נאומים כאשר אחד מהם ע\"י סגן ראש העירייה. שם גם הניחו את 80 הלפידים.\nבשעה 19.00 שחקני תאטרון   BaWiMo וקבוצת תאטרון בשם Lachlom (זהו השם של הקבוצה בעברית והשחקנים כמובן פולנים). שחקנים אלה הקריאו קטעים מיומנו של דוד שפירא שנכתב ונמצא בגטו ופורסם בפולנית ע\"י הגלריה הביאליסטוקאית Slendzinskich\nכמו כן התקיים קונצרט דואט של שני נגנים שמוצאם באוקראינה.",
+      "category": "events",
+      "contentLength": 1781,
+      "imageCount": 6,
+      "videoCount": 0
+    },
+    {
+      "id": "torah-2016",
+      "title": "לוח התורמים להכנסת ספר התורה לבית הכנסת ע\"ש שמואל מוהליבר, לעילוי נשמת יקיריהם:",
+      "category": "events",
+      "contentLength": 1247,
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "id": "scientific-conference-2010",
+      "title": "",
+      "category": "events",
+      "contentLength": 495,
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "id": "past-ceremonies",
+      "title": "טכסי אזכרה ה-60 עד ה-72 :",
+      "category": "events",
+      "contentLength": 1174,
+      "imageCount": 4,
+      "videoCount": 0
+    }
+  ]
+}

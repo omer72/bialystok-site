@@ -1,0 +1,23 @@
+{
+  "id": "memorial-book",
+  "slug": "memorial-book",
+  "title": {
+    "he": "אתר ספר הזיכרון לביאליסטוק:",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "אתר ספר הזיכרון לביאליסטוק:",
+    "en": ""
+  },
+  "content": {
+    "he": "<h1>אתר ספר הזיכרון לביאליסטוק:</h1>",
+    "en": ""
+  },
+  "images": [],
+  "videos": [],
+  "parentPage": "",
+  "imageDisplayMode": "gallery"
+}

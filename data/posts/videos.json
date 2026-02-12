@@ -1,0 +1,23 @@
+{
+  "id": "videos",
+  "slug": "videos",
+  "title": {
+    "he": "סרטונים",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "סרטון על החיים היהודיים בביאליסטוק לפני מלחמת העולם ה-2 (1939):",
+    "en": ""
+  },
+  "content": {
+    "he": "<h1>סרטון על החיים היהודיים בביאליסטוק לפני מלחמת העולם ה-2 (1939):</h1>",
+    "en": ""
+  },
+  "images": [],
+  "videos": [],
+  "parentPage": "",
+  "imageDisplayMode": "gallery"
+}

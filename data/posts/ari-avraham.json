@@ -1,0 +1,25 @@
+{
+  "id": "ari-avraham",
+  "slug": "ari-avraham",
+  "title": {
+    "he": "ארי אברהם",
+    "en": ""
+  },
+  "category": "survivors",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "ארי אברהם",
+    "en": ""
+  },
+  "content": {
+    "he": "",
+    "en": ""
+  },
+  "images": [
+    "https://static.wixstatic.com/media/be8555_3dae29f6d6f747378b1101a962084d75~mv2.jpg/v1/fill/w_588,h_839,al_c,lg_1,q_85,enc_avif,quality_auto/be8555_3dae29f6d6f747378b1101a962084d75~mv2.jpg"
+  ],
+  "videos": [],
+  "parentPage": "survivor-stories",
+  "imageDisplayMode": "gallery"
+}

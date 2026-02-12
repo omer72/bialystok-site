@@ -1,7 +1,10 @@
 {
   "id": "memorial-82",
   "slug": "memorial-82",
-  "title": { "he": "טכס אזכרה ה-82, 21.8.25 ביהוד", "en": "82nd Memorial Ceremony, 21.8.25 Yehud" },
+  "title": {
+    "he": "טכס אזכרה ה-82, 21.8.25 ביהוד",
+    "en": "82nd Memorial Ceremony, 21.8.25 Yehud"
+  },
   "category": "events",
   "date": "2025-08-21",
   "author": "ron-london",
@@ -15,5 +18,6 @@
   },
   "images": [],
   "videos": [],
-  "parentPage": "events"
+  "parentPage": "events",
+  "imageDisplayMode": "gallery"
 }

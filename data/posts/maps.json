@@ -1,0 +1,26 @@
+{
+  "id": "maps",
+  "slug": "maps",
+  "title": {
+    "he": "מפות ביאליסטוק והגטו",
+    "en": ""
+  },
+  "category": "content",
+  "date": "2026-02-12",
+  "author": "migrated",
+  "excerpt": {
+    "he": "(הקלק על התמונות כדי להגדיל)",
+    "en": ""
+  },
+  "content": {
+    "he": "<h2>&nbsp;מפת גיטו ביאליסטוק&nbsp; &nbsp;</h2>\n<p>אוגוסט 1941- ספטמבר 1943</p>\n<h2><br/>\n&nbsp; מפת העיר ביאליסטוק בפולין</h2>\n<h2>ספטמבר 1939</h2>\n<h1>(הקלק על התמונות כדי להגדיל)</h1>",
+    "en": ""
+  },
+  "images": [
+    "https://static.wixstatic.com/media/5eeb4e_c95ec864ec83434ca0b263dd42649f64~mv2.jpg/v1/fill/w_743,h_523,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_c95ec864ec83434ca0b263dd42649f64~mv2.jpg",
+    "https://static.wixstatic.com/media/5eeb4e_18b505efc815484c8a81fa7349968aad~mv2.jpg/v1/fill/w_642,h_523,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_18b505efc815484c8a81fa7349968aad~mv2.jpg"
+  ],
+  "videos": [],
+  "parentPage": "",
+  "imageDisplayMode": "gallery"
+}

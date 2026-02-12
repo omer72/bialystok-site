@@ -68,7 +68,7 @@ export default function ContentPage() {
             )}
 
             {content.images.length > 0 && (
-              <ImageGallery images={content.images} alt={getLocalizedText(content.title)} />
+              <ImageGallery images={content.images} alt={getLocalizedText(content.title)} displayMode={content.imageDisplayMode} />
             )}
           </div>
         ) : (

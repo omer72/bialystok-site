@@ -88,7 +88,7 @@ export default function PostDetailPage() {
           {post.images.length > 1 && (
             <div className="post-gallery">
               <h3>{getLocalizedText({ he: 'גלריה', en: 'Gallery' })}</h3>
-              <ImageGallery images={post.images.slice(1)} alt={getLocalizedText(post.title)} />
+              <ImageGallery images={post.images.slice(1)} alt={getLocalizedText(post.title)} displayMode={post.imageDisplayMode} />
             </div>
           )}
         </article>

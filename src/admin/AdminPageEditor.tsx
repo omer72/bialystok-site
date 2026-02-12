@@ -16,6 +16,7 @@ interface PostFormData {
   category: string;
   videos: string[];
   images: string[];
+  imageDisplayMode: 'gallery' | 'carousel';
   showInNav: boolean;
   navOrder: number;
 }
@@ -49,6 +50,7 @@ export default function AdminPageEditor() {
     category: 'content',
     videos: [],
     images: [],
+    imageDisplayMode: 'gallery',
     showInNav: false,
     navOrder: 99,
   });
@@ -86,6 +88,7 @@ export default function AdminPageEditor() {
           category: page.category || post?.category || 'content',
           videos: post?.videos || [],
           images: post?.images || [],
+          imageDisplayMode: post?.imageDisplayMode || 'gallery',
           showInNav: page.showInNav ?? false,
           navOrder: page.navOrder ?? 99,
         });
@@ -181,6 +184,7 @@ export default function AdminPageEditor() {
       content: { he: form.contentHe, en: form.contentEn },
       images: form.images,
       videos: form.videos,
+      imageDisplayMode: form.imageDisplayMode,
       parentPage: form.category === 'survivors' ? 'survivor-stories'
         : form.category === 'people' ? 'famous-people'
         : form.category === 'events' ? 'events'
@@ -340,6 +344,19 @@ export default function AdminPageEditor() {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Image display mode */}
+        <div className="form-group">
+          <label className="form-label">תצוגת תמונות / Image Display</label>
+          <select
+            className="form-select"
+            value={form.imageDisplayMode}
+            onChange={(e) => setForm({ ...form, imageDisplayMode: e.target.value as 'gallery' | 'carousel' })}
+          >
+            <option value="gallery">גלריה (רשת) / Gallery (Grid)</option>
+            <option value="carousel">קרוסלה / Carousel (Slider)</option>
+          </select>
         </div>
 
         {/* Images */}

@@ -20,6 +20,7 @@ interface PostFormData {
   date: string;
   videos: string[];
   images: string[];
+  imageDisplayMode: 'gallery' | 'carousel';
 }
 
 const CATEGORIES = [
@@ -54,6 +55,7 @@ export default function AdminPostEditor() {
     date: new Date().toISOString().split('T')[0],
     videos: [],
     images: [],
+    imageDisplayMode: 'gallery',
   });
 
   useEffect(() => {
@@ -81,6 +83,7 @@ export default function AdminPostEditor() {
           date: post.date || new Date().toISOString().split('T')[0],
           videos: post.videos || [],
           images: post.images || [],
+          imageDisplayMode: post.imageDisplayMode || 'gallery',
         });
       }
     } catch {
@@ -174,6 +177,7 @@ export default function AdminPostEditor() {
       content: { he: form.contentHe, en: form.contentEn },
       images: form.images,
       videos: form.videos,
+      imageDisplayMode: form.imageDisplayMode,
     };
 
     try {
@@ -363,6 +367,19 @@ export default function AdminPostEditor() {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Image display mode */}
+        <div className="form-group">
+          <label className="form-label">תצוגת תמונות / Image Display</label>
+          <select
+            className="form-select"
+            value={form.imageDisplayMode}
+            onChange={(e) => setForm({ ...form, imageDisplayMode: e.target.value as 'gallery' | 'carousel' })}
+          >
+            <option value="gallery">גלריה (רשת) / Gallery (Grid)</option>
+            <option value="carousel">קרוסלה / Carousel (Slider)</option>
+          </select>
         </div>
 
         {/* Images */}

@@ -25,6 +25,7 @@ export interface PostData {
   images: string[];
   videos: string[];
   parentPage: string;
+  imageDisplayMode?: 'gallery' | 'carousel';
 }
 
 export function usePages() {

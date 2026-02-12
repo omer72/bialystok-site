@@ -1,14 +1,20 @@
 import { useState } from 'react';
+import ImageCarousel from './ImageCarousel';
 
 interface ImageGalleryProps {
   images: string[];
   alt?: string;
+  displayMode?: 'gallery' | 'carousel';
 }
 
-export default function ImageGallery({ images, alt = '' }: ImageGalleryProps) {
+export default function ImageGallery({ images, alt = '', displayMode = 'gallery' }: ImageGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (images.length === 0) return null;
+
+  if (displayMode === 'carousel') {
+    return <ImageCarousel images={images} alt={alt} />;
+  }
 
   return (
     <>

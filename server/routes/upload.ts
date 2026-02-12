@@ -35,7 +35,12 @@ router.post('/upload', verifyAdmin, upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  const filePath = `/images/posts/${req.file.filename}`;
+  const relativePath = `/images/posts/${req.file.filename}`;
+  // In production, return full URL so images work from any frontend host
+  const baseUrl = process.env.PUBLIC_URL || `${req.protocol}://${req.get('host')}`;
+  const filePath = process.env.NODE_ENV === 'production'
+    ? `${baseUrl}${relativePath}`
+    : relativePath;
   res.json({ path: filePath });
 });
 

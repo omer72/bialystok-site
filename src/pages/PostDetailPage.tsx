@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import type { PostData } from '../hooks/usePages';
+import { API_BASE } from '../utils/api';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 import ImageGallery from '../components/ImageGallery';
 
@@ -17,7 +18,7 @@ export default function PostDetailPage() {
     const loadPost = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/posts/by-slug/${slug}`);
+        const res = await fetch(`${API_BASE}/posts/by-slug/${slug}`);
         if (res.ok) {
           setPost(await res.json());
         }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { usePages, PostData } from '../hooks/usePages';
+import { API_BASE } from '../utils/api';
 import PostCard from '../components/PostCard';
 
 export default function PostListPage() {
@@ -17,7 +18,7 @@ export default function PostListPage() {
     const loadPosts = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/posts?category=${page?.category || ''}`);
+        const res = await fetch(`${API_BASE}/posts?category=${page?.category || ''}`);
         if (res.ok) {
           setPosts(await res.json());
         }

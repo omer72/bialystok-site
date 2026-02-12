@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE } from '../utils/api';
 
 export interface PageDef {
   id: string;
@@ -32,7 +33,7 @@ export function usePages() {
 
   const fetchPages = async () => {
     try {
-      const res = await fetch('/api/pages');
+      const res = await fetch(`${API_BASE}/pages`);
       if (res.ok) {
         const data = await res.json();
         setPages(data);

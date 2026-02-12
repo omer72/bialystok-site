@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { usePages, PostData } from '../hooks/usePages';
+import { API_BASE } from '../utils/api';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 import ImageGallery from '../components/ImageGallery';
 
@@ -18,7 +19,7 @@ export default function ContentPage() {
     const loadContent = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/posts/${page?.id}`);
+        const res = await fetch(`${API_BASE}/posts/${page?.id}`);
         if (res.ok) {
           setContent(await res.json());
         }

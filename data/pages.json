@@ -1,0 +1,155 @@
+[
+  {
+    "id": "home",
+    "slug": "/",
+    "title": { "he": "בית", "en": "Home" },
+    "type": "home",
+    "navOrder": 1,
+    "showInNav": true
+  },
+  {
+    "id": "about",
+    "slug": "/about",
+    "title": { "he": "אודותנו", "en": "About Us" },
+    "type": "content",
+    "navOrder": 2,
+    "showInNav": true,
+    "children": ["goals", "org-structure", "milestones"]
+  },
+  {
+    "id": "goals",
+    "slug": "/about/goals",
+    "title": { "he": "מטרות העמותה", "en": "Association Goals" },
+    "type": "content",
+    "navOrder": 0,
+    "showInNav": false,
+    "parentPage": "about"
+  },
+  {
+    "id": "org-structure",
+    "slug": "/about/org-structure",
+    "title": { "he": "מבנה אירגוני", "en": "Organizational Structure" },
+    "type": "content",
+    "navOrder": 0,
+    "showInNav": false,
+    "parentPage": "about"
+  },
+  {
+    "id": "milestones",
+    "slug": "/about/milestones",
+    "title": { "he": "ציוני דרך בתולדות הקרייה והעמותה", "en": "Milestones" },
+    "type": "content",
+    "navOrder": 0,
+    "showInNav": false,
+    "parentPage": "about"
+  },
+  {
+    "id": "survivor-stories",
+    "slug": "/blog",
+    "title": { "he": "סיפורי ניצולים", "en": "Survivor Stories" },
+    "type": "post-list",
+    "category": "survivors",
+    "navOrder": 3,
+    "showInNav": true
+  },
+  {
+    "id": "famous-people",
+    "slug": "/people",
+    "title": { "he": "אישים מביאליסטוק", "en": "Famous People" },
+    "type": "post-list",
+    "category": "people",
+    "navOrder": 4,
+    "showInNav": true,
+    "children": ["rabbi-mohilever", "dr-zamenhof"]
+  },
+  {
+    "id": "maps",
+    "slug": "/maps",
+    "title": { "he": "מפות ביאליסטוק והגטו", "en": "Maps of Bialystok" },
+    "type": "content",
+    "navOrder": 5,
+    "showInNav": true
+  },
+  {
+    "id": "history",
+    "slug": "/history",
+    "title": { "he": "תולדות יהודי ביאליסטוק", "en": "History of Bialystok Jews" },
+    "type": "content",
+    "navOrder": 6,
+    "showInNav": true
+  },
+  {
+    "id": "community-news",
+    "slug": "/news",
+    "title": { "he": "קריית ביאלסטוק", "en": "Community News" },
+    "type": "post-list",
+    "category": "news",
+    "navOrder": 7,
+    "showInNav": true
+  },
+  {
+    "id": "archive",
+    "slug": "/archive",
+    "title": { "he": "ארכיון ביאליסטוק", "en": "Bialystok Archive" },
+    "type": "content",
+    "navOrder": 8,
+    "showInNav": true
+  },
+  {
+    "id": "museum",
+    "slug": "/museum",
+    "title": { "he": "המוזאון היהודי בביאליסטוק", "en": "Jewish Museum in Bialystok" },
+    "type": "content",
+    "navOrder": 9,
+    "showInNav": true
+  },
+  {
+    "id": "events",
+    "slug": "/events",
+    "title": { "he": "אירועים", "en": "Events" },
+    "type": "post-list",
+    "category": "events",
+    "navOrder": 10,
+    "showInNav": true
+  },
+  {
+    "id": "cemetery",
+    "slug": "/cemetery",
+    "title": { "he": "בית הקברות היהודי בביאליסטוק", "en": "Jewish Cemetery in Bialystok" },
+    "type": "content",
+    "navOrder": 11,
+    "showInNav": true
+  },
+  {
+    "id": "memorial-book",
+    "slug": "/memorial-book",
+    "title": { "he": "ספר זיכרון לביאליסטוק", "en": "Memorial Book" },
+    "type": "content",
+    "navOrder": 12,
+    "showInNav": true
+  },
+  {
+    "id": "videos",
+    "slug": "/videos",
+    "title": { "he": "וידאו", "en": "Videos" },
+    "type": "content",
+    "navOrder": 13,
+    "showInNav": true
+  },
+  {
+    "id": "contact",
+    "slug": "/contact",
+    "title": { "he": "צור קשר", "en": "Contact Us" },
+    "type": "contact",
+    "navOrder": 14,
+    "showInNav": true
+  },
+  {
+    "id": "related-sites",
+    "slug": "/related-sites",
+    "title": { "he": "אתרים קשורים", "en": "Related Websites" },
+    "type": "content",
+    "navOrder": 15,
+    "showInNav": true
+  }
+]

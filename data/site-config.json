@@ -1,0 +1,24 @@
+{
+  "title": {
+    "he": "ארגון יוצאי ביאליסטוק והסביבה בישראל",
+    "en": "Bialystok Vicinity Expats in Israel"
+  },
+  "contact": {
+    "address": {
+      "he": "סובניצו 17, יהוד, ישראל 5621108",
+      "en": "17 Sovnitzo, Yehud, Israel 5621108"
+    },
+    "email": "bialystok.israel@gmail.com",
+    "phones": ["972-54-9932329", "972-3-5360037"],
+    "mapCoords": { "lat": 32.0333, "lng": 34.8833 }
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/profile.php?id=100064773498498",
+    "youtube": "https://www.youtube.com/@user-fk9ue3ds7g",
+    "instagram": "https://www.instagram.com/bialystok_israel/"
+  },
+  "footer": {
+    "he": "©2024 ארגון יוצאי ביאליסטוק והסביבה בישראל",
+    "en": "©2024 Bialystok Vicinity Expats in Israel"
+  }
+}

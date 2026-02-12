@@ -134,15 +134,19 @@ export default function AdminPostEditor() {
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    try {
-      const token = getAdminToken()!;
-      const result = await uploadImage(file, token);
-      setForm((prev) => ({ ...prev, images: [...prev.images, result.path] }));
-    } catch {
-      alert('Failed to upload image');
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    const token = getAdminToken()!;
+    for (const file of Array.from(files)) {
+      try {
+        const result = await uploadImage(file, token);
+        setForm((prev) => ({ ...prev, images: [...prev.images, result.path] }));
+      } catch {
+        alert(`Failed to upload: ${file.name}`);
+      }
     }
+    // Reset input so same files can be selected again
+    e.target.value = '';
   };
 
   const removeImage = (index: number) => {
@@ -368,6 +372,7 @@ export default function AdminPostEditor() {
             ref={fileInputRef}
             type="file"
             accept="image/*"
+            multiple
             onChange={handleImageUpload}
             style={{ display: 'none' }}
           />

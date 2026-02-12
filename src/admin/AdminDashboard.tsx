@@ -79,6 +79,43 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDuplicatePost = async (postId: string) => {
+    try {
+      const token = getAdminToken()!;
+      const res = await fetch(`${API_BASE}/posts/${postId}`);
+      if (!res.ok) return alert('Failed to load post');
+      const original = await res.json();
+
+      const newId = `${original.id}-copy-${Date.now()}`;
+      const copy = {
+        ...original,
+        id: newId,
+        slug: newId,
+        title: {
+          he: `${original.title.he} (העתק)`,
+          en: `${original.title.en} (copy)`,
+        },
+      };
+
+      const createRes = await fetch(`${API_BASE}/admin/posts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(copy),
+      });
+
+      if (createRes.ok) {
+        navigate(`/admin/post-editor/${newId}`);
+      } else {
+        alert('Failed to duplicate');
+      }
+    } catch {
+      alert('Failed to duplicate');
+    }
+  };
+
   const handleLogout = () => {
     clearAdminToken();
     navigate('/admin');
@@ -150,6 +187,12 @@ export default function AdminDashboard() {
                       <Link to={`/admin/post-editor/${post.id}`} className="btn btn-secondary btn-sm">
                         {t('admin.editPage')}
                       </Link>
+                      <button
+                        onClick={() => handleDuplicatePost(post.id)}
+                        className="btn btn-secondary btn-sm"
+                      >
+                        Duplicate
+                      </button>
                       <button
                         onClick={() => handleDeletePost(post.id)}
                         className="btn btn-danger btn-sm"

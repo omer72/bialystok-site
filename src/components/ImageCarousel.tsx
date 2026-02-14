@@ -43,6 +43,19 @@ export default function ImageCarousel({ images, alt = '' }: ImageCarouselProps) 
     return () => track.removeEventListener('scroll', handleScroll);
   }, [images.length]);
 
+  // Auto-rotate every 5 seconds
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const next = prev >= images.length - 1 ? 0 : prev + 1;
+        scrollToIndex(next);
+        return next;
+      });
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [images.length, scrollToIndex]);
+
   if (images.length === 0) return null;
 
   return (

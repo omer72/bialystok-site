@@ -42,9 +42,35 @@ export async function apiDelete(path: string, token?: string): Promise<void> {
   if (!res.ok) throw new Error(`API error: ${res.status}`);
 }
 
+function convertToPng(file: File): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d')!;
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        if (!blob) return reject(new Error('PNG conversion failed'));
+        const name = file.name.replace(/\.[^.]+$/, '.png');
+        resolve(new File([blob], name, { type: 'image/png' }));
+      }, 'image/png');
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(img.src);
+      reject(new Error('Failed to load image for conversion'));
+    };
+    const objectUrl = URL.createObjectURL(file);
+    img.src = objectUrl;
+  });
+}
+
 export async function uploadImage(file: File, token: string): Promise<{ path: string }> {
+  const pngFile = file.type === 'image/png' ? file : await convertToPng(file);
   const formData = new FormData();
-  formData.append('image', file);
+  formData.append('image', pngFile);
   const res = await fetch(`${API_BASE}/upload`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },

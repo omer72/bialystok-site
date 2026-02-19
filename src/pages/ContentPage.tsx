@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import { usePages, PostData } from '../hooks/usePages';
 import { API_BASE } from '../utils/api';
@@ -8,12 +9,23 @@ import ImageGallery from '../components/ImageGallery';
 
 export default function ContentPage() {
   const location = useLocation();
+  const { t } = useTranslation();
   const { getLocalizedText } = useLanguage();
   const { getPageBySlug } = usePages();
   const [content, setContent] = useState<PostData | null>(null);
   const [loading, setLoading] = useState(true);
 
   const page = getPageBySlug(location.pathname);
+
+  // Extract parent path from current pathname (e.g., /about/slug -> /about, /slug -> /)
+  const getParentPath = () => {
+    const pathname = location.pathname;
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length > 1) {
+      return '/' + parts[0];
+    }
+    return '/';
+  };
 
   useEffect(() => {
     const loadContent = async () => {
@@ -48,6 +60,10 @@ export default function ContentPage() {
   return (
     <div className="page-content">
       <div className="container">
+        <Link to={getParentPath()} className="back-link">
+          ← {t('common.backToList')}
+        </Link>
+
         <h1 className="page-title">{getLocalizedText(page.title)}</h1>
 
         {loading ? (
@@ -64,6 +80,23 @@ export default function ContentPage() {
                 {content.videos.map((url, i) => (
                   <YouTubeEmbed key={i} url={url} title={`${getLocalizedText(content.title)} video ${i + 1}`} />
                 ))}
+              </div>
+            )}
+
+            {content.files && content.files.length > 0 && (
+              <div className="post-files">
+                {content.files.map((file: { name: string; path: string }, i: number) =>
+                  file.path.toLowerCase().endsWith('.pdf') ? (
+                    <div key={i} className="file-preview">
+                      <iframe src={file.path} width="100%" height="600" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
+                      <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
+                    </div>
+                  ) : (
+                    <div key={i} className="file-download">
+                      <a href={file.path} target="_blank" rel="noopener" download>{file.name}</a>
+                    </div>
+                  )
+                )}
               </div>
             )}
 

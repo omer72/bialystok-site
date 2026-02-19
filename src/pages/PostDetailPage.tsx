@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import type { PostData } from '../hooks/usePages';
@@ -9,10 +9,21 @@ import ImageGallery from '../components/ImageGallery';
 
 export default function PostDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const { t } = useTranslation();
   const { getLocalizedText } = useLanguage();
   const [post, setPost] = useState<PostData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Extract parent path from current pathname (e.g., /blog/slug -> /blog, /people/slug -> /people)
+  const getParentPath = () => {
+    const pathname = location.pathname;
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length > 1) {
+      return '/' + parts[0];
+    }
+    return '/';
+  };
 
   useEffect(() => {
     const loadPost = async () => {
@@ -51,7 +62,7 @@ export default function PostDetailPage() {
   return (
     <div className="page-content">
       <div className="container post-detail">
-        <Link to=".." className="back-link">
+        <Link to={getParentPath()} className="back-link">
           ← {t('common.backToList')}
         </Link>
 
@@ -82,6 +93,24 @@ export default function PostDetailPage() {
               {post.videos.map((url, i) => (
                 <YouTubeEmbed key={i} url={url} title={`${getLocalizedText(post.title)} video ${i + 1}`} />
               ))}
+            </div>
+          )}
+
+          {post.files && post.files.length > 0 && (
+            <div className="post-files">
+              <h3>{getLocalizedText({ he: 'קבצים', en: 'Files' })}</h3>
+              {post.files.map((file: { name: string; path: string }, i: number) =>
+                file.path.toLowerCase().endsWith('.pdf') ? (
+                  <div key={i} className="file-preview">
+                    <iframe src={file.path} width="100%" height="600" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
+                    <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
+                  </div>
+                ) : (
+                  <div key={i} className="file-download">
+                    <a href={file.path} target="_blank" rel="noopener" download>{file.name}</a>
+                  </div>
+                )
+              )}
             </div>
           )}
 

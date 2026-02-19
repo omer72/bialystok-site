@@ -664,7 +664,7 @@ img {
   margin: var(--space-3) 0;
 }
 
-.post-videos, .post-gallery, .file-preview-fullwidth {
+.post-videos, .post-gallery {
   margin-top: var(--space-10);
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);

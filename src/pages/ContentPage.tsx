@@ -89,21 +89,17 @@ export default function ContentPage() {
                   const isPdf = file.path && file.path.toLowerCase().endsWith('.pdf');
                   const isVideo = file.path && /\.(mp4|webm|ogg)$/i.test(file.path);
                   return isPdf ? (
-                    <div key={i} className="file-preview-fullwidth">
-                      <div className="container" style={{ padding: '0 var(--space-6)' }}>
-                        <iframe src={file.path} width="100%" height="700" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
-                        <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
-                      </div>
+                    <div key={i} className="file-preview">
+                      <iframe src={file.path} width="100%" height="600" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
+                      <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
                     </div>
                   ) : isVideo ? (
-                    <div key={i} className="file-preview-fullwidth">
-                      <div className="container" style={{ padding: '0 var(--space-6)' }}>
-                        <video width="100%" height="auto" controls style={{ borderRadius: '8px', backgroundColor: '#000' }} title={file.name}>
-                          <source src={file.path} type="video/mp4" />
-                          {getLocalizedText({ he: 'הדפדפן שלך לא תומך בהשמעת וידאו', en: 'Your browser does not support video playback' })}
-                        </video>
-                        <p><a href={file.path} target="_blank" rel="noopener" download>{file.name}</a></p>
-                      </div>
+                    <div key={i} className="file-preview">
+                      <video width="100%" height="auto" controls style={{ borderRadius: '8px', backgroundColor: '#000' }} title={file.name}>
+                        <source src={file.path} type="video/mp4" />
+                        {getLocalizedText({ he: 'הדפדפן שלך לא תומך בהשמעת וידאו', en: 'Your browser does not support video playback' })}
+                      </video>
+                      <p><a href={file.path} target="_blank" rel="noopener" download>{file.name}</a></p>
                     </div>
                   ) : file.path ? (
                     <div key={i} className="file-download">

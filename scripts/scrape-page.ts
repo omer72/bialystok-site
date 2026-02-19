@@ -217,7 +217,24 @@ async function scrapePage(url: string) {
       }
     });
 
+    // --- Links from buttons ---
+    var linkSections = [];
+    var seenLinks = {};
+    document.querySelectorAll('[data-semantic-classname="button"]').forEach(function(btn) {
+      var link = btn.querySelector('a[data-testid="linkElement"]');
+      if (link && link.href && !seenLinks[link.href]) {
+        var text = link.textContent ? link.textContent.trim() : '';
+        if (text && text.length > 0) {
+          seenLinks[link.href] = true;
+          linkSections.push('<a href="' + link.href + '" target="_blank" rel="noopener">' + text + '</a>');
+        }
+      }
+    });
+
     var content = contentParts.join('\\n');
+    if (linkSections.length > 0) {
+      content += '\\n<div class="links-section">\\n' + linkSections.join('\\n') + '\\n</div>';
+    }
 
     return {
       title: title,

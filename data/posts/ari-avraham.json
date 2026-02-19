@@ -21,6 +21,20 @@
     "/images/migrated/ari-avraham/ari-avraham-2.jpg",
     "/images/migrated/ari-avraham/ari-avraham-3.jpg"
   ],
+  "files": [
+    {
+      "name": "ארי אברהם זכרונות - קובץ PDF",
+      "path": "/files/migrated/ari-avraham/mem.pdf"
+    },
+    {
+      "name": "ארי אברהם - ביקור במפעל מטוסים בו עבד",
+      "path": "/files/migrated/ari-avraham/visit.mp4"
+    },
+    {
+      "name": "ארי אברהם - מכתב תודה",
+      "path": "/files/migrated/ari-avraham/letter.pdf"
+    }
+  ],
   "videos": [],
   "parentPage": "survivor-stories",
   "imageDisplayMode": "gallery"

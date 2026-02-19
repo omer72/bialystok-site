@@ -666,14 +666,29 @@ img {
 
 .post-videos, .post-gallery {
   margin-top: var(--space-10);
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding: var(--space-8) 0;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  transform: translateX(-50%);
+  padding: var(--space-8) var(--space-6);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ======================== Wix Content Override ======================== */
+.rich-content h2,
+.rich-content h3,
+.post-gallery h3 {
+  color: var(--color-primary) !important;
+}
+
+.rich-content [style*="color:#FFFFFF"],
+.rich-content [style*="color: #FFFFFF"] {
+  color: var(--color-text) !important;
+}
+
+.rich-content .wixui-rich-text__text,
+.post-gallery .wixui-rich-text__text {
+  color: inherit !important;
 }
 
 /* ======================== Links Section ======================== */

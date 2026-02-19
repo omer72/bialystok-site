@@ -85,17 +85,17 @@ export default function ContentPage() {
 
             {content.files && content.files.length > 0 && (
               <div className="post-files">
-                {content.files.map((file: { name: string; path: string }, i: number) =>
-                  file.path.toLowerCase().endsWith('.pdf') ? (
+                {content.files.map((file: { name: string; path?: string }, i: number) =>
+                  file.path && file.path.toLowerCase().endsWith('.pdf') ? (
                     <div key={i} className="file-preview">
                       <iframe src={file.path} width="100%" height="600" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
                       <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
                     </div>
-                  ) : (
+                  ) : file.path ? (
                     <div key={i} className="file-download">
                       <a href={file.path} target="_blank" rel="noopener" download>{file.name}</a>
                     </div>
-                  )
+                  ) : null
                 )}
               </div>
             )}

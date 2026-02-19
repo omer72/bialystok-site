@@ -579,6 +579,14 @@ img {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   margin-bottom: var(--space-8);
+  max-height: 500px;
+}
+
+.post-featured-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: contain;
 }
 
 .rich-content {
@@ -587,7 +595,74 @@ img {
 }
 
 .rich-content p { margin-bottom: var(--space-4); }
-.rich-content img { border-radius: var(--border-radius); margin: var(--space-4) 0; }
+.rich-content img {
+  border-radius: var(--border-radius);
+  margin: var(--space-4) auto;
+  max-width: 100%;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
+  object-fit: contain !important;
+  display: block;
+}
+.rich-content div[style] {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+}
+
+.rich-content .file-preview {
+  margin: var(--space-6) 0;
+}
+
+.rich-content .file-preview iframe {
+  max-width: 100%;
+  background: white;
+}
+
+.rich-content .file-preview p,
+.rich-content .file-download {
+  margin: var(--space-2) 0;
+}
+
+.rich-content .file-preview a,
+.rich-content .file-download a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Hide Wix file-upload-viewer blocks that weren't replaced */
+.rich-content [data-hook="file-upload-viewer"] {
+  display: none;
+}
+
+.post-files {
+  margin-top: var(--space-8);
+}
+
+.post-files .file-preview {
+  margin: var(--space-6) 0;
+}
+
+.post-files .file-preview iframe {
+  max-width: 100%;
+  background: white;
+}
+
+.post-files .file-preview p {
+  margin-top: var(--space-2);
+}
+
+.post-files .file-preview a,
+.post-files .file-download a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.post-files .file-download {
+  margin: var(--space-3) 0;
+}
 
 .post-videos, .post-gallery {
   margin-top: var(--space-10);

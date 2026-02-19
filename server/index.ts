@@ -34,8 +34,9 @@ app.use(cors({
 
 app.use(express.json());
 
-// Serve uploaded images
+// Serve uploaded images and files
 app.use('/images', express.static(path.join(process.cwd(), 'public', 'images')));
+app.use('/files', express.static(path.join(process.cwd(), 'public', 'files')));
 
 // API routes
 app.use('/api', adminRouter);

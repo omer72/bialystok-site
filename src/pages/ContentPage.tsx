@@ -95,7 +95,15 @@ export default function ContentPage() {
                     <div key={i} className="file-download">
                       <a href={file.path} target="_blank" rel="noopener" download>{file.name}</a>
                     </div>
-                  ) : null
+                  ) : (
+                    <div key={i} className="file-download">
+                      <span style={{ color: 'var(--color-text-muted)' }}>{file.name}</span>
+                      <br />
+                      <small style={{ fontSize: '0.85em', color: 'var(--color-text-muted)' }}>
+                        {getLocalizedText({ he: '(קובץ בהכנה - צפוי בקרוב)', en: '(File pending - coming soon)' })}
+                      </small>
+                    </div>
+                  )
                 )}
               </div>
             )}

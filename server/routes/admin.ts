@@ -129,15 +129,23 @@ router.delete('/admin/posts/:id', verifyAdmin, (req, res) => {
 // Get single post by ID
 router.get('/posts/:id', (req, res) => {
   try {
+    console.log(`\n📖 Fetching post by ID: ${req.params.id}`);
     const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.json'));
+    console.log(`   Found ${files.length} post files`);
+
     for (const f of files) {
       const post = readJson(path.join(POSTS_DIR, f));
       if (post.id === req.params.id) {
+        console.log(`   ✅ Found post in file: ${f}`);
+        console.log(`   Content length: ${post.content?.he?.length || 0} chars`);
+        console.log(`   Has links-section: ${post.content?.he?.includes('links-section') ? 'YES' : 'NO'}`);
         return res.json(post);
       }
     }
+    console.log(`   ❌ Post not found`);
     res.status(404).json({ error: 'Post not found' });
-  } catch {
+  } catch (err) {
+    console.error(`   ❌ Error reading post:`, err);
     res.status(500).json({ error: 'Failed to read post' });
   }
 });

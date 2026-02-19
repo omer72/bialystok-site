@@ -31,12 +31,18 @@ export default function ContentPage() {
     const loadContent = async () => {
       setLoading(true);
       try {
+        console.log(`📖 ContentPage: Loading post by ID: ${page?.id}`);
         const res = await fetch(`${API_BASE}/posts/${page?.id}`);
         if (res.ok) {
-          setContent(await res.json());
+          const data = await res.json();
+          console.log(`✅ ContentPage: Got response, content length:`, data.content?.he?.length || 0);
+          console.log(`   Has links-section:`, data.content?.he?.includes('links-section') ? 'YES' : 'NO');
+          setContent(data);
+        } else {
+          console.error(`❌ ContentPage: API returned status ${res.status}`);
         }
-      } catch {
-        // Content might be inline in page definition
+      } catch (err) {
+        console.error(`❌ ContentPage: Fetch failed:`, err);
       } finally {
         setLoading(false);
       }

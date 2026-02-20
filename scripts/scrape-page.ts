@@ -228,20 +228,22 @@ async function scrapePage(url: string) {
 
     debugInfo.filterReasons = filterReason;
 
-    // Carousel/cycle images (Wix cycle-carousel-wrap)
-    document.querySelectorAll('.cycle-carousel-wrap img, [class*="carousel"] img').forEach(function(img) {
-      var src = img.src || img.getAttribute('data-src') || '';
-      if (!src || imgSeen[src]) return;
-      if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1) return;
-      var w = img.naturalWidth || img.width || 0;
-      var h = img.naturalHeight || img.height || 0;
-      if (w > 0 && w < 100 && h > 0 && h < 100) return;
-      imgSeen[src] = true;
-      images.push(src);
+    // Extract carousel images from data-thumb attributes (most reliable)
+    document.querySelectorAll('.cycle-carousel-wrap .item[data-thumb]').forEach(function(item) {
+      var thumb = item.getAttribute('data-thumb');
+      if (thumb && !imgSeen[thumb]) {
+        // Extract base image URL without query params to get clean URL
+        var cleanUrl = thumb.split('/v1/')[0];
+        if (!imgSeen[cleanUrl]) {
+          imgSeen[thumb] = true;
+          imgSeen[cleanUrl] = true;
+          images.push(thumb);
+        }
+      }
     });
 
-    // Background images
-    document.querySelectorAll('[style*="background-image"]').forEach(function(el) {
+    // Carousel background images as fallback
+    document.querySelectorAll('.cycle-carousel-wrap .filler').forEach(function(el) {
       var match = el.style.backgroundImage.match(/url\\(["']?(.*?)["']?\\)/);
       if (match && match[1] && match[1].indexOf('wixstatic') !== -1 && !imgSeen[match[1]]) {
         imgSeen[match[1]] = true;

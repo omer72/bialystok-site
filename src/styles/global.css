@@ -612,6 +612,11 @@ img {
   max-width: 100%;
 }
 
+.rich-content > div[style*="max-width"] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .rich-content .file-preview {
   margin: var(--space-6) 0;
 }
@@ -619,6 +624,13 @@ img {
 .rich-content .file-preview iframe {
   max-width: 100%;
   background: white;
+}
+
+.rich-content div[style*="max-width: 800px"] {
+  width: 100% !important;
+  max-width: 800px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .rich-content .file-preview p,

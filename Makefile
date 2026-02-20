@@ -107,7 +107,7 @@ scrape-memorial-80:
 	@echo "To scrape memorial-80 page, use: make scrape URL='<url>' ID='memorial-80'"
 
 scrape-memorial-81:
-	@echo "To scrape memorial-81 page, use: make scrape URL='<url>' ID='memorial-81'"
+	npx tsx scripts/scrape-page.ts https://www.bialystokvicinityexpatsisrael.org.il/%D7%98%D7%9B%D7%A1-%D7%90%D7%96%D7%9B%D7%A8%D7%94-%D7%94-81-29-8-24-%D7%91%D7%99%D7%94%D7%95%D7%93 'memorial-81'
 
 scrape-memorial-82:
 	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/%D7%98%D7%9B%D7%A1-%D7%90%D7%96%D7%9B%D7%A8%D7%94-%D7%94-82-21-8-25-%D7%91%D7%99%D7%94%D7%95%D7%93' 'memorial-82'
@@ -119,7 +119,7 @@ scrape-memorial-poland-2023:
 	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/%D7%90%D7%96%D7%9B%D7%A8%D7%94-5-2-23-%D7%91%D7%91%D7%99%D7%90%D7%9C%D7%99%D7%A1%D7%98%D7%95%D7%A7-%D7%A4%D7%95%D7%9C%D7%99%D7%9F' 'memorial-poland-2023'
 
 scrape-scientific-conference:
-	@echo "To scrape scientific-conference-2010 page, use: make scrape URL='<url>' ID='scientific-conference-2010'"
+	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/%D7%9B%D7%A0%D7%A1-%D7%9E%D7%93%D7%A2%D7%99-%D7%91%D7%99%D7%90%D7%9C%D7%99%D7%A1%D7%98%D7%95%D7%A7-%D7%9B%D7%9E%D7%95%D7%93%D7%9C-11-2010' 'scientific-conference-2010'
 
 scrape-torah-2016:
-	@echo "To scrape torah-2016 page, use: make scrape URL='<url>' ID='torah-2016'"
+	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%A1%D7%A4%D7%A8-%D7%AA%D7%95%D7%A8%D7%94-2016' 'torah-2016'

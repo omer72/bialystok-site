@@ -13,10 +13,11 @@
     "en": ""
   },
   "content": {
-    "he": "",
+    "he": "<h2 style=\"font-size:30px; line-height:normal; text-align:right;\">כנס מדעי \"ביאליסטוק כמודל\" 11/2010</h2>\n<div class=\"file-preview\">\n<iframe src=\"http://www.zchor.org/bialystok/kenes1.pdf\" width=\"100%\" height=\"600\" style=\"border: none; border-radius: 8px;\" title=\"כנס מדעי\"></iframe>\n<p><a href=\"http://www.zchor.org/bialystok/kenes1.pdf\" target=\"_blank\" rel=\"noopener\">כנס מדעי - PDF</a></p>\n</div>",
     "en": ""
   },
-  "images": [],
+  "images": [
+  ],
   "videos": [],
   "parentPage": "events",
   "imageDisplayMode": "gallery"

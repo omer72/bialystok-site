@@ -204,11 +204,15 @@ async function scrapePage(url: string) {
         return;
       }
       // Skip tiny images (social icons, decorations) — check natural dimensions
-      var w = img.naturalWidth || img.width || 0;
-      var h = img.naturalHeight || img.height || 0;
-      if (w > 0 && w < 100 && h > 0 && h < 100) {
-        filterReason[src] = 'tiny image (' + w + 'x' + h + ')';
-        return;
+      // BUT: Don't skip carousel images (oRtuWN parent) as they may not have loaded dimensions yet
+      var isCarouselImg = parent.indexOf('oRtuWN') !== -1 || parent.indexOf('O6KwRn') !== -1;
+      if (!isCarouselImg) {
+        var w = img.naturalWidth || img.width || 0;
+        var h = img.naturalHeight || img.height || 0;
+        if (w > 0 && w < 100 && h > 0 && h < 100) {
+          filterReason[src] = 'tiny image (' + w + 'x' + h + ')';
+          return;
+        }
       }
       // Skip social media icon URLs
       if (src.indexOf('social') !== -1 || src.indexOf('instagram') !== -1 || src.indexOf('facebook') !== -1 || src.indexOf('youtube') !== -1 || src.indexOf('twitter') !== -1) {

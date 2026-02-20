@@ -19,9 +19,13 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/news/news-1.jpg",
-    "/images/migrated/news/news-2.jpg",
-    "/images/migrated/news/news-3.jpg"
+    "/images/migrated/news/news-1.png",
+    "/images/migrated/news/news-2.png",
+    "/images/migrated/news/news-3.png",
+    "/images/migrated/news/news-4.png",
+    "/images/migrated/news/news-5.jpg",
+    "/images/migrated/news/news-6.jpg",
+    "/images/migrated/news/news-7.jpg"
   ],
   "parentPage": "",
   "imageDisplayMode": "gallery"

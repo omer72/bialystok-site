@@ -387,22 +387,11 @@ async function scrapePage(url: string) {
   })()`) as { title: string; content: string; images: string[]; videos: string[]; files: { name: string; ext: string }[] };
 
   // Add deduplicated iframe carousel images to main results
+  // Only use carousel images from iframe, skip social icons from main frame
   if (deduplicatedCarouselImages.length > 0) {
-    const imgSeen: Record<string, boolean> = {};
-    result.images.forEach(img => {
-      const baseId = img.match(/media\/([^~]*)/)?.[1] || img;
-      imgSeen[baseId] = true;
-    });
-
-    deduplicatedCarouselImages.forEach(img => {
-      const baseId = img.match(/media\/([^~]*)/)?.[1] || img;
-      if (!imgSeen[baseId]) {
-        result.images.push(img);
-        imgSeen[baseId] = true;
-      }
-    });
-
-    console.log(`✅ Added ${deduplicatedCarouselImages.length} unique carousel images from iframes`);
+    // Start fresh with ONLY carousel images (skip all main frame images to avoid social icons)
+    result.images = deduplicatedCarouselImages;
+    console.log(`✅ Using ${deduplicatedCarouselImages.length} unique carousel images from iframes (skipped main frame images to avoid social icons)`);
   }
 
   await browser.close();

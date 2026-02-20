@@ -20,6 +20,13 @@
   },
   "images": [
     "https://static.wixstatic.com/media/5eeb4e_659ac92445f8445091d628e778742c8c~mv2.jpg/v1/fill/w_990,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_659ac92445f8445091d628e778742c8c~mv2.jpg",
+    "/images/migrated/news/news-1.jpg",
+    "/images/migrated/news/news-2.jpg",
+    "/images/migrated/news/news-3.jpg",
+    "/images/migrated/news/news-4.jpg",
+    "/images/migrated/news/news-5.jpg",
+    "/images/migrated/news/news-6.jpg",
+    "/images/migrated/news/news-7.jpg",
     "/images/migrated/news/news-8.jpg",
     "/images/migrated/news/news-9.jpg",
     "/images/migrated/news/news-10.jpg",
@@ -40,14 +47,7 @@
     "/images/migrated/news/news-25.jpg",
     "/images/migrated/news/news-26.jpg",
     "/images/migrated/news/news-27.jpg",
-    "/images/migrated/news/news-28.jpg",
-    "/images/migrated/news/news-29.jpg",
-    "/images/migrated/news/news-30.jpg",
-    "/images/migrated/news/news-31.jpg",
-    "/images/migrated/news/news-32.jpg",
-    "/images/migrated/news/news-33.jpg",
-    "/images/migrated/news/news-34.jpg",
-    "/images/migrated/news/news-35.jpg"
+    "/images/migrated/news/news-28.jpg"
   ],
   "parentPage": "",
   "imageDisplayMode": "carousel"

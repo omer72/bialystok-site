@@ -133,8 +133,13 @@ async function scrapePage(url: string) {
         document.querySelectorAll('.cycle-carousel-wrap .item[data-thumb]').forEach(function(item) {
           var thumb = item.getAttribute('data-thumb');
           if (thumb && !imgSeen[thumb]) {
-            imgSeen[thumb] = true;
-            images.push(thumb);
+            // Normalize URL by extracting base image ID to avoid duplicates with different sizes
+            var baseId = thumb.match(/media\\/([^~]*)/)?.[1] || thumb;
+            if (!imgSeen[baseId]) {
+              imgSeen[thumb] = true;
+              imgSeen[baseId] = true;
+              images.push(thumb);
+            }
           }
         });
 
@@ -142,8 +147,12 @@ async function scrapePage(url: string) {
         document.querySelectorAll('.cycle-carousel-wrap .filler, [class*="carousel"] img').forEach(function(el) {
           var src = el.src || (el.style.backgroundImage ? el.style.backgroundImage.match(/url\\(["']?(.*?)["']?\\)/)?.[1] : null);
           if (src && !imgSeen[src]) {
-            imgSeen[src] = true;
-            images.push(src);
+            var baseId = src.match(/media\\/([^~]*)/)?.[1] || src;
+            if (!imgSeen[baseId]) {
+              imgSeen[src] = true;
+              imgSeen[baseId] = true;
+              images.push(src);
+            }
           }
         });
 
@@ -158,6 +167,18 @@ async function scrapePage(url: string) {
       // Frame might be inaccessible or from different origin
     }
   }
+
+  // Deduplicate carousel images by base URL (remove size/format variations)
+  const deduplicatedCarouselImages: string[] = [];
+  const carouselImageIds = new Set<string>();
+  for (const img of iframeCarouselImages) {
+    const baseId = img.match(/media\/([^~]*)/)?.[1] || img;
+    if (!carouselImageIds.has(baseId)) {
+      carouselImageIds.add(baseId);
+      deduplicatedCarouselImages.push(img);
+    }
+  }
+  console.log(`⏳ Deduplicated carousel images: ${iframeCarouselImages.length} → ${deduplicatedCarouselImages.length}`);
 
   const result = await page.evaluate(`(function() {
     // Debug logging
@@ -365,19 +386,23 @@ async function scrapePage(url: string) {
     };
   })()`) as { title: string; content: string; images: string[]; videos: string[]; files: { name: string; ext: string }[] };
 
-  // Add iframe carousel images to main results
-  if (iframeCarouselImages.length > 0) {
+  // Add deduplicated iframe carousel images to main results
+  if (deduplicatedCarouselImages.length > 0) {
     const imgSeen: Record<string, boolean> = {};
-    result.images.forEach(img => imgSeen[img] = true);
+    result.images.forEach(img => {
+      const baseId = img.match(/media\/([^~]*)/)?.[1] || img;
+      imgSeen[baseId] = true;
+    });
 
-    iframeCarouselImages.forEach(img => {
-      if (!imgSeen[img]) {
+    deduplicatedCarouselImages.forEach(img => {
+      const baseId = img.match(/media\/([^~]*)/)?.[1] || img;
+      if (!imgSeen[baseId]) {
         result.images.push(img);
-        imgSeen[img] = true;
+        imgSeen[baseId] = true;
       }
     });
 
-    console.log(`✅ Added ${iframeCarouselImages.length} carousel images from iframes`);
+    console.log(`✅ Added ${deduplicatedCarouselImages.length} unique carousel images from iframes`);
   }
 
   await browser.close();

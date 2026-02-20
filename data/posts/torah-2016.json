@@ -13,14 +13,13 @@
     "en": ""
   },
   "content": {
-    "he": "<h1>לוח התורמים להכנסת ספר התורה לבית הכנסת ע\"ש שמואל מוהליבר, לעילוי נשמת יקיריהם:</h1>",
+    "he": "<h1 class=\"font_2 wixui-rich-text__text\" dir=\"rtl\" style=\"font-size:30px; line-height:normal; text-align:center;\" data-font-size=\"30\" data-font-size-type=\"px\"><span class=\"color_45 wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"letter-spacing:0.01em;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-size:30px;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-family:helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\">לוח התורמים להכנסת ספר התורה לבית הכנסת ע\"ש שמואל מוהליבר, לעילוי נשמת יקיריהם:</span></span></span></span></h1>",
     "en": ""
   },
   "images": [
     "/images/migrated/torah-2016/torah-2016-1.jpg",
     "/images/migrated/torah-2016/torah-2016-2.jpg",
-    "/images/migrated/torah-2016/torah-2016-3.jpg",
-    "/images/migrated/torah-2016/torah-2016-4.jpg"
+    "/images/migrated/torah-2016/torah-2016-3.jpg"
   ],
   "videos": [],
   "parentPage": "events",

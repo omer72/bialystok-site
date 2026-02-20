@@ -389,9 +389,21 @@ async function scrapePage(url: string) {
   // Add deduplicated iframe carousel images to main results
   // Only use carousel images from iframe, skip social icons from main frame
   if (deduplicatedCarouselImages.length > 0) {
-    // Start fresh with ONLY carousel images (skip all main frame images to avoid social icons)
-    result.images = deduplicatedCarouselImages;
-    console.log(`✅ Using ${deduplicatedCarouselImages.length} unique carousel images from iframes (skipped main frame images to avoid social icons)`);
+    // Convert thumbnail URLs to full-size versions by removing/modifying size parameters
+    const fullSizeImages = deduplicatedCarouselImages.map(url => {
+      // Extract base image URL and replace with full-size version
+      // Original: https://static.wixstatic.com/media/5eeb4e_xxx~mv2.jpg/v1/fill/w_300,h_300,al_c.../5eeb4e_xxx~mv2.jpg
+      // Target:   https://static.wixstatic.com/media/5eeb4e_xxx~mv2.jpg/v1/fill/w_1920,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_xxx~mv2.jpg
+
+      if (url.includes('/v1/fill/')) {
+        // Replace sizing parameters with larger dimensions for full-size
+        return url.replace(/\/v1\/fill\/[^/]+\//, '/v1/fill/w_1920,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/');
+      }
+      return url;
+    });
+
+    result.images = fullSizeImages;
+    console.log(`✅ Using ${fullSizeImages.length} unique carousel images from iframes at full-size (skipped thumbnails)`);
   }
 
   await browser.close();

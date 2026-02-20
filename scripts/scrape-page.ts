@@ -188,7 +188,7 @@ async function scrapePage(url: string) {
     var imgSeen = {};
     var filterReason = {};
 
-    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img, .oRtuWN img, .O6KwRn img').forEach(function(img) {
+    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img, .j7pOnl img').forEach(function(img) {
       var src = img.src || img.getAttribute('data-src') || '';
       var parent = img.parentElement ? img.parentElement.className : '';
       if (!src) {
@@ -204,8 +204,8 @@ async function scrapePage(url: string) {
         return;
       }
       // Skip tiny images (social icons, decorations) — check natural dimensions
-      // BUT: Don't skip carousel images (oRtuWN parent) as they may not have loaded dimensions yet
-      var isCarouselImg = parent.indexOf('oRtuWN') !== -1 || parent.indexOf('O6KwRn') !== -1;
+      // BUT: Don't skip j7pOnl images as they're carousel building photos
+      var isCarouselImg = parent.indexOf('j7pOnl') !== -1;
       if (!isCarouselImg) {
         var w = img.naturalWidth || img.width || 0;
         var h = img.naturalHeight || img.height || 0;

@@ -81,7 +81,7 @@ export default function ContentPage() {
               dangerouslySetInnerHTML={{ __html: getLocalizedText(content.content) }}
             />
 
-            {content.videos.length > 0 && (
+            {content.videos && content.videos.length > 0 && (
               <div className="content-videos">
                 {content.videos.map((url, i) => (
                   <YouTubeEmbed key={i} url={url} title={`${getLocalizedText(content.title)} video ${i + 1}`} />
@@ -124,7 +124,7 @@ export default function ContentPage() {
               </div>
             )}
 
-            {content.images.length > 0 && (
+            {content.images && content.images.length > 0 && (
               <ImageGallery images={content.images} alt={getLocalizedText(content.title)} displayMode={content.imageDisplayMode} />
             )}
           </div>

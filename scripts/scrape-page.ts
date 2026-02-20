@@ -264,13 +264,25 @@ async function scrapePage(url: string) {
       content += '\\n<div class="links-section">\\n' + linkSections.join('\\n') + '\\n</div>';
     }
 
-    // Debug: Check for carousel elements
+    // Debug: Check for carousel elements and list ALL images
     debugInfo.totalImgs = document.querySelectorAll('img').length;
     debugInfo.carouselWrapFound = !!document.querySelector('.cycle-carousel-wrap');
     debugInfo.allElements = Array.from(document.querySelectorAll('[class*="carousel"], [class*="gallery"]')).map(function(el) {
       return el.className;
     }).slice(0, 10);
-    console.log('DEBUG INFO:', JSON.stringify(debugInfo));
+
+    // List all img src and their parent classes
+    debugInfo.allImages = Array.from(document.querySelectorAll('img')).map(function(img) {
+      var src = img.src || '';
+      var parent = img.parentElement ? img.parentElement.className : '';
+      var grandparent = img.parentElement && img.parentElement.parentElement ? img.parentElement.parentElement.className : '';
+      return {
+        src: src.substring(src.length - 80),
+        parentClass: parent.substring(0, 60),
+        grandparentClass: grandparent.substring(0, 60)
+      };
+    });
+    console.log('DEBUG INFO:', JSON.stringify(debugInfo, null, 2));
 
     return {
       title: title,
@@ -290,6 +302,11 @@ async function scrapePage(url: string) {
     console.log(`   Total IMG tags found: ${(result as any).debugInfo.totalImgs}`);
     console.log(`   Carousel wrap found: ${(result as any).debugInfo.carouselWrapFound}`);
     console.log(`   Element classes with 'carousel' or 'gallery': ${(result as any).debugInfo.allElements.join(', ')}`);
+    console.log(`\n📸 All ${(result as any).debugInfo.totalImgs} images found:`);
+    (result as any).debugInfo.allImages.forEach((img: any, i: number) => {
+      console.log(`   ${i + 1}. Parent: [${img.parentClass}] | Grandparent: [${img.grandparentClass}]`);
+      console.log(`      → ${img.src}`);
+    });
   }
 
   return result;

@@ -825,12 +825,9 @@ img {
 .carousel-track {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  gap: var(--space-4);
-  padding: var(--space-4);
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -839,7 +836,6 @@ img {
 
 .carousel-slide {
   flex: 0 0 100%;
-  scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;

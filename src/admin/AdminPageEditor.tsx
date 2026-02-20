@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { apiGet, apiPost, apiPut, uploadImage, getAdminToken } from '../utils/api';
 import YouTubeEmbed from '../components/YouTubeEmbed';
+import ReactQuill from 'react-quill';
 
 interface PostFormData {
   id: string;
@@ -292,24 +293,44 @@ export default function AdminPageEditor() {
         {/* Content */}
         <div className="form-group">
           <label className="form-label">{t('admin.contentHe')}</label>
-          <textarea
-            className="form-textarea"
+          <ReactQuill
             value={form.contentHe}
-            onChange={(e) => setForm({ ...form, contentHe: e.target.value })}
-            rows={10}
-            dir="rtl"
+            onChange={(value) => setForm({ ...form, contentHe: value })}
+            theme="snow"
+            modules={{
+              toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['blockquote', 'code-block'],
+                [{ 'align': [] }],
+                ['link'],
+                ['clean']
+              ]
+            }}
             placeholder="ניתן להשתמש ב-HTML..."
+            style={{ direction: 'rtl', textAlign: 'right' }}
           />
         </div>
         <div className="form-group">
           <label className="form-label">{t('admin.contentEn')}</label>
-          <textarea
-            className="form-textarea"
+          <ReactQuill
             value={form.contentEn}
-            onChange={(e) => setForm({ ...form, contentEn: e.target.value })}
-            rows={10}
-            dir="ltr"
+            onChange={(value) => setForm({ ...form, contentEn: value })}
+            theme="snow"
+            modules={{
+              toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['blockquote', 'code-block'],
+                [{ 'align': [] }],
+                ['link'],
+                ['clean']
+              ]
+            }}
             placeholder="HTML is supported..."
+            style={{ direction: 'ltr', textAlign: 'left' }}
           />
         </div>
 

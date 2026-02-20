@@ -666,9 +666,10 @@ img {
 
 .post-videos, .post-gallery {
   margin-top: var(--space-10);
-  padding: var(--space-8) 0;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--space-8) 50vw;
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -679,8 +680,6 @@ img {
 .post-gallery h3 {
   padding: 0 var(--space-6);
   margin-bottom: var(--space-4);
-  margin-left: calc(50vw - 50%);
-  width: calc(100% - (50vw - 50%) * 2);
 }
 
 /* ======================== Wix Content Override ======================== */

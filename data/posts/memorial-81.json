@@ -13,13 +13,21 @@
     "en": ""
   },
   "content": {
-    "he": "<h2>קטעי וידאו מהטכס&nbsp;</h2>\n<h2>נאום יו\"ר האירגון</h2>\n<h2>מצגת שהוצגה בטכס</h2>",
+    "he": "<h2 class=\"font_2 wixui-rich-text__text\" style=\"font-size:30px; line-height:normal;\" data-font-size=\"30\" data-font-size-type=\"px\"><span class=\"color_45 wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"letter-spacing:0.01em;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-size:30px;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-family:helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\">קטעי וידאו מהטכס&nbsp;</span></span></span></span></h2>\n<h2 class=\"font_2 wixui-rich-text__text\" style=\"font-size:30px; line-height:normal;\" data-font-size=\"30\" data-font-size-type=\"px\"><span class=\"color_45 wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"letter-spacing:0.01em;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-size:30px;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-family:helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\">נאום יו\"ר האירגון</span></span></span></span></h2>\n<div class=\"file-preview\">\n<iframe src=\"https://www.bialystokvicinityexpatsisrael.org.il/_files/ugd/5eeb4e_9147175e3a50451ab6ea891c564a26a6.pdf\" width=\"100%\" height=\"600\" style=\"border: none; border-radius: 8px;\" title=\"נאום היו\"ר\"></iframe>\n<p><a href=\"https://www.bialystokvicinityexpatsisrael.org.il/_files/ugd/5eeb4e_9147175e3a50451ab6ea891c564a26a6.pdf\" target=\"_blank\" rel=\"noopener\">נאום היו\"ר</a></p>\n</div>\n<h2 class=\"font_2 wixui-rich-text__text\" style=\"font-size:30px; line-height:normal;\" data-font-size=\"30\" data-font-size-type=\"px\"><span class=\"color_45 wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"letter-spacing:0.01em;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-size:30px;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-family:helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\">מצגת שהוצגה בטכס</span></span></span></span></h2>\n<div class=\"links-section\">\n<a href=\"https://www.bialystokvicinityexpatsisrael.org.il/_files/ugd/5eeb4e_22f9e86028514d028b01110476ed0750.pptx?dn=%D7%99%D7%9C%D7%93%D7%99%20%D7%91%D7%A8%D7%95%D7%A1%D7%A7%D7%99%D7%A0%D7%99%D7%A7%D7%99.pptx\" target=\"_blank\" rel=\"noopener\">מצגת</a>\n</div>",
     "en": ""
   },
   "images": [
-    "/images/migrated/memorial-81/memorial-81-1.jpg"
+    "/images/migrated/memorial-81/memorial-81-2.jpg"
   ],
-  "videos": [],
+  "videos": [
+    "https://www.youtube.com/watch?v=j6jvWST0MoQ",
+    "https://www.youtube.com/watch?v=o7EgI9CxqOo",
+    "https://www.youtube.com/watch?v=1F36sHEsN1o",
+    "https://www.youtube.com/watch?v=C4Dmn0OJ0KM",
+    "https://www.youtube.com/watch?v=WPU1KY7rBb4",
+    "https://www.youtube.com/watch?v=SGAcg0fuDTs",
+    "https://www.youtube.com/watch?v=yUyvvQpM-FU1"
+  ],
   "parentPage": "events",
   "imageDisplayMode": "gallery"
 }

@@ -13,11 +13,13 @@
     "en": ""
   },
   "content": {
-    "he": "",
+    "he": " ",
     "en": ""
   },
-  "images": [],
-  "videos": [],
+  "images": [
+    "/images/migrated/museum/museum-1.png"
+  ],
+  "videos": ["https://www.youtube.com/watch?v=1uyL-ms14sg"],
   "parentPage": "",
   "imageDisplayMode": "gallery"
 }

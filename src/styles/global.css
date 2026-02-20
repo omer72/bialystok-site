@@ -612,6 +612,10 @@ img {
   max-width: 100%;
 }
 
+.rich-content div[style*="position: relative"] {
+  position: relative !important;
+}
+
 .rich-content > div[style*="max-width"] {
   margin-left: auto !important;
   margin-right: auto !important;

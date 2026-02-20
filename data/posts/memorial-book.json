@@ -13,10 +13,12 @@
     "en": ""
   },
   "content": {
-    "he": "<h1>אתר ספר הזיכרון לביאליסטוק:</h1>",
+    "he": "<h1 class=\"font_2 wixui-rich-text__text\" dir=\"rtl\" style=\"font-size:30px; line-height:normal;\" data-font-size=\"30\" data-font-size-type=\"px\"><span class=\"color_45 wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"letter-spacing:0.01em;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-size:30px;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\"><span style=\"font-family:helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif;\" class=\"wixui-rich-text__text\" data-font-size=\"30\" data-font-size-type=\"px\">אתר ספר הזיכרון לביאליסטוק:</span></span></span></span></h1>\n<div class=\"links-section\">\n<a href=\"http://www.zchor.org/bialystok/toc.htm#saving\" target=\"_blank\" rel=\"noopener\">ספר זיכרון</a>\n</div>",
     "en": ""
   },
-  "images": [],
+  "images": [
+    "/images/migrated/memorial-book/memorial-book-1.png"
+  ],
   "videos": [],
   "parentPage": "",
   "imageDisplayMode": "gallery"

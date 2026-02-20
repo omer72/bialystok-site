@@ -118,6 +118,47 @@ async function scrapePage(url: string) {
   // Final wait for all dynamic content
   await new Promise((r) => setTimeout(r, 3000));
 
+  // Try to extract carousel images from iframes
+  let iframeCarouselImages: string[] = [];
+  const frames = page.frames();
+  console.log(`⏳ Found ${frames.length} frames, checking for carousel images in iframes...`);
+
+  for (const frame of frames) {
+    try {
+      const frameCarouselImages = await frame.evaluate(`(() => {
+        var images = [];
+        var imgSeen = {};
+
+        // Try to find carousel images in this frame
+        document.querySelectorAll('.cycle-carousel-wrap .item[data-thumb]').forEach(function(item) {
+          var thumb = item.getAttribute('data-thumb');
+          if (thumb && !imgSeen[thumb]) {
+            imgSeen[thumb] = true;
+            images.push(thumb);
+          }
+        });
+
+        // Also try background images
+        document.querySelectorAll('.cycle-carousel-wrap .filler, [class*="carousel"] img').forEach(function(el) {
+          var src = el.src || (el.style.backgroundImage ? el.style.backgroundImage.match(/url\\(["']?(.*?)["']?\\)/)?.[1] : null);
+          if (src && !imgSeen[src]) {
+            imgSeen[src] = true;
+            images.push(src);
+          }
+        });
+
+        return images;
+      })()`) as string[];
+
+      if (frameCarouselImages.length > 0) {
+        console.log(`   Found ${frameCarouselImages.length} carousel images in frame: ${frame.url()}`);
+        iframeCarouselImages = iframeCarouselImages.concat(frameCarouselImages);
+      }
+    } catch (e) {
+      // Frame might be inaccessible or from different origin
+    }
+  }
+
   const result = await page.evaluate(`(function() {
     // Debug logging
     var debugInfo = {
@@ -323,6 +364,21 @@ async function scrapePage(url: string) {
       debugInfo: debugInfo
     };
   })()`) as { title: string; content: string; images: string[]; videos: string[]; files: { name: string; ext: string }[] };
+
+  // Add iframe carousel images to main results
+  if (iframeCarouselImages.length > 0) {
+    const imgSeen: Record<string, boolean> = {};
+    result.images.forEach(img => imgSeen[img] = true);
+
+    iframeCarouselImages.forEach(img => {
+      if (!imgSeen[img]) {
+        result.images.push(img);
+        imgSeen[img] = true;
+      }
+    });
+
+    console.log(`✅ Added ${iframeCarouselImages.length} carousel images from iframes`);
+  }
 
   await browser.close();
 

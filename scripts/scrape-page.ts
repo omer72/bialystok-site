@@ -186,21 +186,45 @@ async function scrapePage(url: string) {
     // --- Images ---
     var images = [];
     var imgSeen = {};
+    var filterReason = {};
+
     document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img, .oRtuWN img, .O6KwRn img').forEach(function(img) {
       var src = img.src || img.getAttribute('data-src') || '';
-      if (!src || imgSeen[src]) return;
-      if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1 || src.indexOf('favicon') !== -1) return;
+      var parent = img.parentElement ? img.parentElement.className : '';
+      if (!src) {
+        filterReason[src] = 'no src';
+        return;
+      }
+      if (imgSeen[src]) {
+        filterReason[src] = 'duplicate';
+        return;
+      }
+      if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1 || src.indexOf('favicon') !== -1) {
+        filterReason[src] = 'contains logo/icon/favicon';
+        return;
+      }
       // Skip tiny images (social icons, decorations) — check natural dimensions
       var w = img.naturalWidth || img.width || 0;
       var h = img.naturalHeight || img.height || 0;
-      if (w > 0 && w < 100 && h > 0 && h < 100) return;
+      if (w > 0 && w < 100 && h > 0 && h < 100) {
+        filterReason[src] = 'tiny image (' + w + 'x' + h + ')';
+        return;
+      }
       // Skip social media icon URLs
-      if (src.indexOf('social') !== -1 || src.indexOf('instagram') !== -1 || src.indexOf('facebook') !== -1 || src.indexOf('youtube') !== -1 || src.indexOf('twitter') !== -1) return;
+      if (src.indexOf('social') !== -1 || src.indexOf('instagram') !== -1 || src.indexOf('facebook') !== -1 || src.indexOf('youtube') !== -1 || src.indexOf('twitter') !== -1) {
+        filterReason[src] = 'social media URL';
+        return;
+      }
       // Skip accessibility icons and language flags
-      if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1) return;
+      if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1) {
+        filterReason[src] = 'accessibility/language icon';
+        return;
+      }
       imgSeen[src] = true;
       images.push(src);
     });
+
+    debugInfo.filterReasons = filterReason;
 
     // Carousel/cycle images (Wix cycle-carousel-wrap)
     document.querySelectorAll('.cycle-carousel-wrap img, [class*="carousel"] img').forEach(function(img) {
@@ -308,6 +332,13 @@ async function scrapePage(url: string) {
     (result as any).debugInfo.allImages.forEach((img: any, i: number) => {
       console.log(`   ${i + 1}. Parent: [${img.parentClass}] | Grandparent: [${img.grandparentClass}]`);
       console.log(`      → ${img.src}`);
+    });
+    console.log(`\n⚠️ Filtered images and reasons:`);
+    Object.entries((result as any).debugInfo.filterReasons).forEach(([src, reason]: [string, any]) => {
+      if (src) {
+        const srcShort = src.substring(src.length - 60);
+        console.log(`   - [${reason}] ${srcShort}`);
+      }
     });
   }
 

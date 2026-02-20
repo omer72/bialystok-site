@@ -89,19 +89,33 @@ async function scrapePage(url: string) {
   // Wait for Wix initial render
   await new Promise((r) => setTimeout(r, 3000));
 
-  // Scroll down to trigger lazy-loaded content and load carousel images
-  let scrollHeight = await page.evaluate('document.body.scrollHeight') as number;
-  for (let y = 0; y < scrollHeight; y += 300) {
-    await page.evaluate(`window.scrollTo(0, ${y})`);
-    await new Promise((r) => setTimeout(r, 300));
+  // Aggressively scroll to load all carousel images (28 images = need multiple passes)
+  console.log('⏳ Loading carousel images (this may take a moment)...');
+  for (let pass = 0; pass < 3; pass++) {
+    let scrollHeight = await page.evaluate('document.body.scrollHeight') as number;
+    for (let y = 0; y < scrollHeight; y += 200) {
+      await page.evaluate(`window.scrollTo(0, ${y})`);
+      await new Promise((r) => setTimeout(r, 150));
+    }
+    // Extra wait at bottom for carousel to fully load
+    await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+    await new Promise((r) => setTimeout(r, 1000));
   }
-  // Scroll to bottom to ensure all carousel content loads
-  await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+
+  // Try to trigger carousel navigation to load all images
+  await page.evaluate(`
+    try {
+      var carouselBtns = document.querySelectorAll('[class*="carousel"] button, [class*="next"], [class*="prev"]');
+      for (var i = 0; i < Math.min(30, carouselBtns.length); i++) {
+        carouselBtns[i].click?.();
+      }
+    } catch(e) {}
+  `);
   await new Promise((r) => setTimeout(r, 2000));
 
   // Scroll back to top
   await page.evaluate('window.scrollTo(0, 0)');
-  // Wait for any remaining dynamic content to render
+  // Final wait for all dynamic content
   await new Promise((r) => setTimeout(r, 3000));
 
   const result = await page.evaluate(`(function() {
@@ -188,42 +202,26 @@ async function scrapePage(url: string) {
     var imgSeen = {};
     var filterReason = {};
 
-    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img, .j7pOnl img').forEach(function(img) {
+    // Get ALL wixstatic images first (carousel likely has many)
+    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], img[src*="static.wixstatic"]').forEach(function(img) {
       var src = img.src || img.getAttribute('data-src') || '';
       var parent = img.parentElement ? img.parentElement.className : '';
-      if (!src) {
-        filterReason[src] = 'no src';
-        return;
-      }
-      if (imgSeen[src]) {
-        filterReason[src] = 'duplicate';
-        return;
-      }
-      if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1 || src.indexOf('favicon') !== -1) {
-        filterReason[src] = 'contains logo/icon/favicon';
-        return;
-      }
-      // Skip tiny images (social icons, decorations) — check natural dimensions
-      // BUT: Don't skip j7pOnl images as they're carousel building photos
-      var isCarouselImg = parent.indexOf('j7pOnl') !== -1;
-      if (!isCarouselImg) {
-        var w = img.naturalWidth || img.width || 0;
-        var h = img.naturalHeight || img.height || 0;
-        if (w > 0 && w < 100 && h > 0 && h < 100) {
-          filterReason[src] = 'tiny image (' + w + 'x' + h + ')';
-          return;
-        }
-      }
-      // Skip social media icon URLs
-      if (src.indexOf('social') !== -1 || src.indexOf('instagram') !== -1 || src.indexOf('facebook') !== -1 || src.indexOf('youtube') !== -1 || src.indexOf('twitter') !== -1) {
-        filterReason[src] = 'social media URL';
-        return;
-      }
-      // Skip accessibility icons and language flags
-      if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1) {
-        filterReason[src] = 'accessibility/language icon';
-        return;
-      }
+      if (!src) return;
+      if (imgSeen[src]) return;
+
+      // Skip only obvious non-content images
+      if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1 || src.indexOf('parastorage') !== -1) return;
+      if (src.indexOf('favicon') !== -1) return;
+
+      imgSeen[src] = true;
+      images.push(src);
+    });
+
+    // Also get images from galleries/carousels with any parent class
+    document.querySelectorAll('[data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img').forEach(function(img) {
+      var src = img.src || img.getAttribute('data-src') || '';
+      if (!src || imgSeen[src]) return;
+      if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1) return;
       imgSeen[src] = true;
       images.push(src);
     });

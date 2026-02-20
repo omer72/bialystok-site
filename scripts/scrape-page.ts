@@ -170,7 +170,7 @@ async function scrapePage(url: string) {
     // --- Images ---
     var images = [];
     var imgSeen = {};
-    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img').forEach(function(img) {
+    document.querySelectorAll('img[src*="wixstatic"], img[src*="wix"], [data-testid="image"] img, .gallery-item img, wow-image img, .cycle-carousel-wrap img, [class*="carousel"] img, [class*="gallery"] img').forEach(function(img) {
       var src = img.src || img.getAttribute('data-src') || '';
       if (!src || imgSeen[src]) return;
       if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1 || src.indexOf('favicon') !== -1) return;

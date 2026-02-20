@@ -1,7 +1,10 @@
 .PHONY: help scrape scrape-maps scrape-history scrape-news scrape-archive \
 	scrape-museum scrape-cemetery scrape-memorial-book scrape-videos \
 	scrape-about scrape-goals scrape-org-structure scrape-milestones \
-	scrape-related-sites scrape-past-ceremonies
+	scrape-related-sites scrape-past-ceremonies \
+	scrape-memorial-74 scrape-memorial-80 scrape-memorial-81 scrape-memorial-82 \
+	scrape-memorial-2022 scrape-memorial-poland-2023 scrape-scientific-conference \
+	scrape-torah-2016
 
 help:
 	@echo "Bialystok Site - Scrape Targets"
@@ -29,6 +32,16 @@ help:
 	@echo "Other pages:"
 	@echo "  make scrape-related-sites"
 	@echo "  make scrape-past-ceremonies"
+	@echo ""
+	@echo "Event/Memorial pages:"
+	@echo "  make scrape-memorial-74"
+	@echo "  make scrape-memorial-80"
+	@echo "  make scrape-memorial-81"
+	@echo "  make scrape-memorial-82"
+	@echo "  make scrape-memorial-2022"
+	@echo "  make scrape-memorial-poland-2023"
+	@echo "  make scrape-scientific-conference"
+	@echo "  make scrape-torah-2016"
 	@echo ""
 	@echo "Example:"
 	@echo "  make scrape URL='https://www.example.com/page' ID='my-page-id'"
@@ -85,3 +98,28 @@ scrape-related-sites:
 
 scrape-past-ceremonies:
 	@echo "To scrape past-ceremonies page, use: make scrape URL='<url>' ID='past-ceremonies'"
+
+# ===================== EVENTS / MEMORIALS =====================
+scrape-memorial-74:
+	@echo "To scrape memorial-74 page, use: make scrape URL='<url>' ID='memorial-74'"
+
+scrape-memorial-80:
+	@echo "To scrape memorial-80 page, use: make scrape URL='<url>' ID='memorial-80'"
+
+scrape-memorial-81:
+	@echo "To scrape memorial-81 page, use: make scrape URL='<url>' ID='memorial-81'"
+
+scrape-memorial-82:
+	@echo "To scrape memorial-82 page, use: make scrape URL='<url>' ID='memorial-82'"
+
+scrape-memorial-2022:
+	@echo "To scrape memorial-2022 page, use: make scrape URL='<url>' ID='memorial-2022'"
+
+scrape-memorial-poland-2023:
+	@echo "To scrape memorial-poland-2023 page, use: make scrape URL='<url>' ID='memorial-poland-2023'"
+
+scrape-scientific-conference:
+	@echo "To scrape scientific-conference-2010 page, use: make scrape URL='<url>' ID='scientific-conference-2010'"
+
+scrape-torah-2016:
+	@echo "To scrape torah-2016 page, use: make scrape URL='<url>' ID='torah-2016'"

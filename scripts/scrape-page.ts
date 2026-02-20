@@ -86,15 +86,23 @@ async function scrapePage(url: string) {
   console.log(`\n🌐 Loading: ${url}`);
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 
-  // Scroll down to trigger lazy-loaded content
-  const scrollHeight = await page.evaluate('document.body.scrollHeight') as number;
-  for (let y = 0; y < scrollHeight; y += 400) {
+  // Wait for Wix initial render
+  await new Promise((r) => setTimeout(r, 3000));
+
+  // Scroll down to trigger lazy-loaded content and load carousel images
+  let scrollHeight = await page.evaluate('document.body.scrollHeight') as number;
+  for (let y = 0; y < scrollHeight; y += 300) {
     await page.evaluate(`window.scrollTo(0, ${y})`);
-    await new Promise((r) => setTimeout(r, 200));
+    await new Promise((r) => setTimeout(r, 300));
   }
+  // Scroll to bottom to ensure all carousel content loads
+  await page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+  await new Promise((r) => setTimeout(r, 2000));
+
+  // Scroll back to top
   await page.evaluate('window.scrollTo(0, 0)');
-  // Wait for Wix dynamic content to render after scroll
-  await new Promise((r) => setTimeout(r, 5000));
+  // Wait for any remaining dynamic content to render
+  await new Promise((r) => setTimeout(r, 3000));
 
   const result = await page.evaluate(`(function() {
     // --- Title ---
@@ -180,6 +188,18 @@ async function scrapePage(url: string) {
       if (w > 0 && w < 100 && h > 0 && h < 100) return;
       // Skip social media icon URLs
       if (src.indexOf('social') !== -1 || src.indexOf('instagram') !== -1 || src.indexOf('facebook') !== -1 || src.indexOf('youtube') !== -1 || src.indexOf('twitter') !== -1) return;
+      imgSeen[src] = true;
+      images.push(src);
+    });
+
+    // Carousel/cycle images (Wix cycle-carousel-wrap)
+    document.querySelectorAll('.cycle-carousel-wrap img, [class*="carousel"] img').forEach(function(img) {
+      var src = img.src || img.getAttribute('data-src') || '';
+      if (!src || imgSeen[src]) return;
+      if (src.indexOf('logo') !== -1 || src.indexOf('icon') !== -1) return;
+      var w = img.naturalWidth || img.width || 0;
+      var h = img.naturalHeight || img.height || 0;
+      if (w > 0 && w < 100 && h > 0 && h < 100) return;
       imgSeen[src] = true;
       images.push(src);
     });

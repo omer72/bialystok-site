@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { API_BASE, apiGet, uploadImage, getAdminToken } from '../utils/api';
 import type { PostData } from '../hooks/usePages';
 import YouTubeEmbed from '../components/YouTubeEmbed';
+import ReactQuill from 'react-quill';
 
 interface PostFormData {
   id: string;

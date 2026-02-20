@@ -105,6 +105,14 @@ async function scrapePage(url: string) {
   await new Promise((r) => setTimeout(r, 3000));
 
   const result = await page.evaluate(`(function() {
+    // Debug logging
+    var debugInfo = {
+      totalImgs: 0,
+      carouselImgs: 0,
+      carouselWrapFound: false,
+      allElements: []
+    };
+
     // --- Title ---
     var title = '';
     var titleSelectors = [
@@ -256,16 +264,34 @@ async function scrapePage(url: string) {
       content += '\\n<div class="links-section">\\n' + linkSections.join('\\n') + '\\n</div>';
     }
 
+    // Debug: Check for carousel elements
+    debugInfo.totalImgs = document.querySelectorAll('img').length;
+    debugInfo.carouselWrapFound = !!document.querySelector('.cycle-carousel-wrap');
+    debugInfo.allElements = Array.from(document.querySelectorAll('[class*="carousel"], [class*="gallery"]')).map(function(el) {
+      return el.className;
+    }).slice(0, 10);
+    console.log('DEBUG INFO:', JSON.stringify(debugInfo));
+
     return {
       title: title,
       content: content || (metaDesc ? '<p>' + metaDesc + '</p>' : ''),
       images: images,
       videos: videos,
-      files: files
+      files: files,
+      debugInfo: debugInfo
     };
   })()`) as { title: string; content: string; images: string[]; videos: string[]; files: { name: string; ext: string }[] };
 
   await browser.close();
+
+  // Log debug info
+  if ((result as any).debugInfo) {
+    console.log(`\n🔍 Debug Info:`);
+    console.log(`   Total IMG tags found: ${(result as any).debugInfo.totalImgs}`);
+    console.log(`   Carousel wrap found: ${(result as any).debugInfo.carouselWrapFound}`);
+    console.log(`   Element classes with 'carousel' or 'gallery': ${(result as any).debugInfo.allElements.join(', ')}`);
+  }
+
   return result;
 }
 

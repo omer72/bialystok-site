@@ -386,25 +386,37 @@ async function scrapePage(url: string) {
     };
   })()`) as { title: string; content: string; images: string[]; videos: string[]; files: { name: string; ext: string }[] };
 
-  // Add deduplicated iframe carousel images to main results
-  // Only use carousel images from iframe, skip social icons from main frame
-  if (deduplicatedCarouselImages.length > 0) {
-    // Convert thumbnail URLs to full-size versions by removing/modifying size parameters
-    const fullSizeImages = deduplicatedCarouselImages.map(url => {
-      // Extract base image URL and replace with full-size version
-      // Original: https://static.wixstatic.com/media/5eeb4e_xxx~mv2.jpg/v1/fill/w_300,h_300,al_c.../5eeb4e_xxx~mv2.jpg
-      // Target:   https://static.wixstatic.com/media/5eeb4e_xxx~mv2.jpg/v1/fill/w_1920,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5eeb4e_xxx~mv2.jpg
+  // Filter main frame images to keep only the 3 main content images (documents/photos)
+  // Skip all social icons, language flags, and accessibility buttons
+  const contentImages = result.images.filter(img => {
+    // Skip all non-wixstatic images
+    if (!img.includes('wixstatic')) return false;
 
-      if (url.includes('/v1/fill/')) {
-        // Replace sizing parameters with larger dimensions for full-size
-        return url.replace(/\/v1\/fill\/[^/]+\//, '/v1/fill/w_1920,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/');
-      }
-      return url;
-    });
+    // Skip social media icons (Instagram, Facebook, YouTube, Twitter - usually smaller/icon-sized)
+    if (img.includes('8d6893') || img.includes('e316f5') || img.includes('a1b09f') || img.includes('23fd2d')) return false;
 
-    result.images = fullSizeImages;
-    console.log(`✅ Using ${fullSizeImages.length} unique carousel images from iframes at full-size (skipped thumbnails)`);
-  }
+    // Skip accessibility and small UI elements
+    if (img.includes('negishim.com') || img.includes('accessibility') || img.includes('linguist-flags')) return false;
+    if (img.match(/flags.*\.png/i) || img.match(/menu_18|font_18|contrast|power_off/)) return false;
+
+    // Keep significant wixstatic images (content photos, documents)
+    return true;
+  }).slice(0, 3); // Take only first 3 content images
+
+  // Convert carousel URLs to full-size versions
+  const fullSizeCarouselImages = deduplicatedCarouselImages.map(url => {
+    if (url.includes('/v1/fill/')) {
+      // Replace sizing parameters with larger dimensions for full-size
+      return url.replace(/\/v1\/fill\/[^/]+\//, '/v1/fill/w_1920,h_1200,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/');
+    }
+    return url;
+  });
+
+  // Combine: main content images + carousel images
+  const combinedImages = [...contentImages, ...fullSizeCarouselImages];
+  result.images = combinedImages;
+
+  console.log(`✅ Using ${contentImages.length} main content images + ${fullSizeCarouselImages.length} carousel images = ${combinedImages.length} total`);
 
   await browser.close();
 

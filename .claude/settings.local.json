@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nConvert uploaded images to PNG and add carousel auto-rotate\n\n- Auto-convert non-PNG images to PNG client-side before uploading\n- Add 5-second auto-rotate to image carousel with loop\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(npx tsx:*)",
+      "WebFetch(domain:www.bialystokvicinityexpatsisrael.org.il)",
+      "Bash(python3:*)",
+      "Bash(curl:*)",
+      "Bash(npx tsc:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(git revert:*)",
+      "WebFetch(domain:bialystoksite.netlify.app)",
+      "Bash(npm run build:*)",
+      "Bash(node --version:*)",
+      "Bash(/usr/local/bin/npx tsx scripts/scrape-page.ts:*)",
+      "Bash(/usr/local/bin/node /usr/local/bin/npx tsx:*)",
+      "Bash(export PATH=\"/usr/local/bin:$PATH\")"
+    ]
+  }
+}

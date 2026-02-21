@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { API_BASE, apiGet, uploadImage, getAdminToken } from '../utils/api';
+import { API_BASE, apiGet, uploadImage, uploadPDF, getAdminToken } from '../utils/api';
 import type { PostData } from '../hooks/usePages';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 import ReactQuill from 'react-quill';
@@ -21,6 +21,7 @@ interface PostFormData {
   date: string;
   videos: string[];
   images: string[];
+  files: { name: string; path: string }[];
   imageDisplayMode: 'gallery' | 'carousel';
 }
 
@@ -36,7 +37,8 @@ export default function AdminPostEditor() {
   const { id } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const pdfInputRef = useRef<HTMLInputElement>(null);
   const [videoInput, setVideoInput] = useState('');
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -56,6 +58,7 @@ export default function AdminPostEditor() {
     date: new Date().toISOString().split('T')[0],
     videos: [],
     images: [],
+    files: [],
     imageDisplayMode: 'gallery',
   });
 
@@ -84,6 +87,7 @@ export default function AdminPostEditor() {
           date: post.date || new Date().toISOString().split('T')[0],
           videos: post.videos || [],
           images: post.images || [],
+          files: post.files || [],
           imageDisplayMode: post.imageDisplayMode || 'gallery',
         });
       }
@@ -160,6 +164,38 @@ export default function AdminPostEditor() {
     }));
   };
 
+  const handlePDFUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    const token = getAdminToken()!;
+    for (const file of Array.from(files)) {
+      try {
+        const result = await uploadPDF(file, token);
+        setForm((prev) => ({
+          ...prev,
+          files: [
+            ...prev.files,
+            {
+              name: file.name.replace(/\.[^.]+$/, ''), // Remove extension from name
+              path: result.path,
+            },
+          ],
+        }));
+      } catch {
+        alert(`Failed to upload: ${file.name}`);
+      }
+    }
+    // Reset input so same files can be selected again
+    e.target.value = '';
+  };
+
+  const removeFile = (index: number) => {
+    setForm((prev) => ({
+      ...prev,
+      files: prev.files.filter((_, i) => i !== index),
+    }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
@@ -178,6 +214,7 @@ export default function AdminPostEditor() {
       content: { he: form.contentHe, en: form.contentEn },
       images: form.images,
       videos: form.videos,
+      files: form.files.length > 0 ? form.files : undefined,
       imageDisplayMode: form.imageDisplayMode,
     };
 
@@ -407,7 +444,7 @@ export default function AdminPostEditor() {
         <div className="form-group">
           <label className="form-label">{t('admin.uploadImage')}</label>
           <input
-            ref={fileInputRef}
+            ref={imageInputRef}
             type="file"
             accept="image/*"
             multiple
@@ -417,7 +454,7 @@ export default function AdminPostEditor() {
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => fileInputRef.current?.click()}
+            onClick={() => imageInputRef.current?.click()}
           >
             {t('admin.uploadImage')}
           </button>
@@ -430,6 +467,45 @@ export default function AdminPostEditor() {
                     type="button"
                     className="btn btn-danger btn-sm"
                     onClick={() => removeImage(i)}
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* PDF Files */}
+        <div className="form-group">
+          <label className="form-label">העלאת קבצים / Upload PDF Files</label>
+          <input
+            ref={pdfInputRef}
+            type="file"
+            accept=".pdf,.mp4,.webm,.ogg,.wav,.mp3"
+            multiple
+            onChange={handlePDFUpload}
+            style={{ display: 'none' }}
+          />
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => pdfInputRef.current?.click()}
+          >
+            העלאת קבצים / Upload Files
+          </button>
+          {form.files.length > 0 && (
+            <div className="file-list">
+              {form.files.map((file, i) => (
+                <div key={i} className="file-item">
+                  <div className="file-info">
+                    <span className="file-name">{file.name}</span>
+                    <span className="file-path" dir="ltr">{file.path}</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removeFile(i)}
                   >
                     ✕
                   </button>

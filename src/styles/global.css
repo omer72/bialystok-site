@@ -1209,6 +1209,41 @@ img {
   font-size: var(--font-size-xs);
 }
 
+.file-list {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.file-name {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.file-path {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
 .form-checkbox-label {
   display: flex;
   align-items: center;

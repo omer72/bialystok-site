@@ -4,7 +4,7 @@
 	scrape-related-sites scrape-past-ceremonies \
 	scrape-memorial-74 scrape-memorial-80 scrape-memorial-81 scrape-memorial-82 \
 	scrape-memorial-2022 scrape-memorial-poland-2023 scrape-scientific-conference \
-	scrape-torah-2016
+	scrape-torah-2016 scrape-blog scrape-blog-post scrape-all-blog-posts
 
 help:
 	@echo "Bialystok Site - Scrape Targets"
@@ -43,8 +43,14 @@ help:
 	@echo "  make scrape-scientific-conference"
 	@echo "  make scrape-torah-2016"
 	@echo ""
+	@echo "Blog posts (Survivor Stories):"
+	@echo "  make scrape-blog             # Scrape main blog list page"
+	@echo "  make scrape-blog-post POST_ID='<id>' HEBREW_NAME='<hebrew-name>'"
+	@echo "  make scrape-all-blog-posts   # Scrape all 22 blog posts (slow)"
+	@echo ""
 	@echo "Example:"
 	@echo "  make scrape URL='https://www.example.com/page' ID='my-page-id'"
+	@echo "  make scrape-blog-post POST_ID='yitzhak-broida' HEBREW_NAME='יצחק-ברויידה'"
 
 scrape:
 	@if [ -z "$(URL)" ] || [ -z "$(ID)" ]; then \
@@ -84,10 +90,10 @@ scrape-about:
 	@echo "To scrape about page, use: make scrape URL='<url>' ID='about'"
 
 scrape-goals:
-	@echo "To scrape goals page, use: make scrape URL='<url>' ID='goals'"
+	npx tsx scripts/scrape-page.ts "https://www.bialystokvicinityexpatsisrael.org.il/%D7%9E%D7%98%D7%A8%D7%95%D7%AA-%D7%94%D7%A2%D7%9E%D7%95%D7%AA%D7%94" 'goals'
 
 scrape-org-structure:
-	@echo "To scrape org-structure page, use: make scrape URL='<url>' ID='org-structure'"
+	npx tsx scripts/scrape-page.ts "https://www.bialystokvicinityexpatsisrael.org.il/%D7%9E%D7%91%D7%A0%D7%94-%D7%90%D7%99%D7%A8%D7%92%D7%95%D7%A0%D7%99-%D7%A9%D7%9C-%D7%94%D7%A2%D7%9E%D7%95%D7%AA%D7%94" 'org-structure'
 
 scrape-milestones:
 	@echo "To scrape milestones page, use: make scrape URL='<url>' ID='milestones'"
@@ -123,3 +129,19 @@ scrape-scientific-conference:
 
 scrape-torah-2016:
 	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%A1%D7%A4%D7%A8-%D7%AA%D7%95%D7%A8%D7%94-2016' 'torah-2016'
+
+# ===================== BLOG POSTS / SURVIVOR STORIES =====================
+scrape-blog:
+	npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/blog' 'survivor-stories'
+
+scrape-blog-post:
+	@if [ -z "$(POST_ID)" ] || [ -z "$(HEBREW_NAME)" ]; then \
+		echo "Error: POST_ID and HEBREW_NAME are required"; \
+		echo "Usage: make scrape-blog-post POST_ID='<id>' HEBREW_NAME='<hebrew-name>'"; \
+		echo "Example: make scrape-blog-post POST_ID='yitzhak-broida' HEBREW_NAME='יצחק-ברויידה'"; \
+		exit 1; \
+	fi
+	node -e "console.log(encodeURIComponent('$(HEBREW_NAME)'))" | xargs -I {} npx tsx scripts/scrape-page.ts 'https://www.bialystokvicinityexpatsisrael.org.il/post/{}' '$(POST_ID)'
+
+scrape-all-blog-posts:
+	npx tsx scripts/scrape-all-blog-posts.ts

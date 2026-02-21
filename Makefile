@@ -100,7 +100,7 @@ scrape-milestones:
 
 # ===================== OTHER PAGES =====================
 scrape-related-sites:
-	@echo "To scrape related-sites page, use: make scrape URL='<url>' ID='related-sites'"
+	npx tsx scripts/scrape-page.ts "https://www.bialystokvicinityexpatsisrael.org.il/%D7%90%D7%AA%D7%A8%D7%99%D7%9D-%D7%A7%D7%A9%D7%95%D7%A8%D7%99%D7%9D" 'related-sites'
 
 scrape-past-ceremonies:
 	@echo "To scrape past-ceremonies page, use: make scrape URL='<url>' ID='past-ceremonies'"

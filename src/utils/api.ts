@@ -80,10 +80,11 @@ export async function uploadImage(file: File, token: string): Promise<{ path: st
   return res.json();
 }
 
-export async function uploadPDF(file: File, token: string): Promise<{ path: string }> {
+export async function uploadPDF(file: File, token: string, postSlug: string): Promise<{ path: string }> {
   const formData = new FormData();
   formData.append('pdf', file);
-  const res = await fetch(`${API_BASE}/upload-pdf`, {
+  const url = `${API_BASE}/upload-pdf?postSlug=${encodeURIComponent(postSlug)}`;
+  const res = await fetch(url, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     body: formData,

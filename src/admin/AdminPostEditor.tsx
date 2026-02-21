@@ -168,9 +168,13 @@ export default function AdminPostEditor() {
     const files = e.target.files;
     if (!files || files.length === 0) return;
     const token = getAdminToken()!;
+    if (!form.slug) {
+      alert('Please set a post slug before uploading files');
+      return;
+    }
     for (const file of Array.from(files)) {
       try {
-        const result = await uploadPDF(file, token);
+        const result = await uploadPDF(file, token, form.slug);
         setForm((prev) => ({
           ...prev,
           files: [

@@ -17,7 +17,31 @@
       "Bash(node --version:*)",
       "Bash(/usr/local/bin/npx tsx scripts/scrape-page.ts:*)",
       "Bash(/usr/local/bin/node /usr/local/bin/npx tsx:*)",
-      "Bash(export PATH=\"/usr/local/bin:$PATH\")"
+      "Bash(export PATH=\"/usr/local/bin:$PATH\")",
+      "Bash(tee:*)",
+      "Bash(grep:*)",
+      "Bash(xargs -I {} bash -c 'grep -q \"\"משה\"\" \"\"{}\"\" && basename \"\"{}\"\"')",
+      "Bash(xargs -I {} bash -c 'grep -q \"\"נחום\"\" \"\"{}\"\" && basename \"\"{}\"\"')",
+      "Bash(__NEW_LINE_9366f29611163ecd__ rm data/posts/yitzhak-broida.json)",
+      "Bash(__NEW_LINE_9366f29611163ecd__ mv data/posts/ytskhk-brvydh.json data/posts/yitzhak-broida.json)",
+      "Bash(__NEW_LINE_9366f29611163ecd__ sed -i '' 's/\"\"id\"\": \"\"ytskhk-brvydh\"\"/\"\"id\"\": \"\"yitzhak-broida\"\"/g; s/\"\"slug\"\": \"\"ytskhk-brvydh\"\"/\"\"slug\"\": \"\"yitzhak-broida\"\"/g' data/posts/yitzhak-broida.json)",
+      "Bash(__NEW_LINE_9366f29611163ecd__ echo \"✅ Fixed yitzhak-broida.json\")",
+      "Bash(__NEW_LINE_b232daf48548223c__ rm data/posts/mordechai-danin.json)",
+      "Bash(__NEW_LINE_b232daf48548223c__ mv data/posts/hsvpr-mrdky-dnyn.json data/posts/mordechai-danin.json)",
+      "Bash(__NEW_LINE_b232daf48548223c__ sed -i '' 's/\"\"id\"\": \"\"hsvpr-mrdky-dnyn\"\"/\"\"id\"\": \"\"mordechai-danin\"\"/g; s/\"\"slug\"\": \"\"hsvpr-mrdky-dnyn\"\"/\"\"slug\"\": \"\"mordechai-danin\"\"/g' data/posts/mordechai-danin.json)",
+      "Bash(__NEW_LINE_b232daf48548223c__ echo \"✅ Fixed mordechai-danin.json\")",
+      "Bash(__NEW_LINE_8e68b4b8ea3c6265__ grep '\"\"content\"\"' data/posts/moshe-hassid.json)",
+      "Bash(__NEW_LINE_89c6a2da5893f4d5__ echo)",
+      "Bash(__NEW_LINE_89c6a2da5893f4d5__ echo \"=== nahum-tzemach.json ===\")",
+      "Bash(__NEW_LINE_89c6a2da5893f4d5__ grep '\"\"content\"\"' data/posts/nahum-tzemach.json)",
+      "Bash(git status:*)",
+      "Bash(__NEW_LINE_52c11d65e0680820__ git add data/posts/mordechai-danin.json data/posts/yitzhak-broida.json)",
+      "Bash(__NEW_LINE_52c11d65e0680820__ git:*)",
+      "Bash(__NEW_LINE_ecd5e3b722651669__ rm data/posts/moshe-hassid.json data/posts/nahum-tzemach.json)",
+      "Bash(__NEW_LINE_ecd5e3b722651669__ echo \"✅ Removed moshe-hassid.json and nahum-tzemach.json \\(contained 404 pages\\)\")",
+      "Bash(__NEW_LINE_9af928ce3f15ae1c__ git log --oneline -5)",
+      "Bash(npm run scrape-single:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

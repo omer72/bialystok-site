@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import path from 'path';
+import fs from 'fs';
 import { verifyAdmin } from '../middleware/auth.js';
 
 const router = Router();
@@ -35,6 +36,8 @@ const fileStorage = multer.diskStorage({
       return cb(new Error('Post slug is required'));
     }
     const dir = path.join(process.cwd(), 'public', 'files', 'migrated', postSlug);
+    // Create directory if it doesn't exist
+    fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
   filename: (_req, file, cb) => {

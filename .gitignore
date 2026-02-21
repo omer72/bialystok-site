@@ -2,5 +2,7 @@ node_modules/
 dist/
 .env
 *.log
-public/images/posts/*
+
 !public/images/posts/.gitkeep
+!public/files/**
+!public/files/migrated/**/*.pdf

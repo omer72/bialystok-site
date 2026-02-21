@@ -9,18 +9,27 @@
   "date": "2026-02-12",
   "author": "migrated",
   "excerpt": {
-    "he": "ילדי ביאליסטוק",
+    "he": "סיפורם של ילדים מביאליסטוק שניצלו בזכות שהייתם בפרוץ המלחמה במחנה קיץ בדרוסקנינקי ,ליטא ובריחתם בדרך חתחתים לסיביר.",
     "en": ""
   },
   "content": {
-    "he": "",
+    "he": "<p><br></p>",
     "en": ""
   },
   "images": [
-    "/images/migrated/children-of-bialystok/children-of-bialystok-1.jpg",
-    "/images/migrated/children-of-bialystok/children-of-bialystok-2.jpg"
+    "/images/posts/1771703268271-540957682.png"
   ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "רואים עולם - ילדי ביאליסטוק",
+      "path": "/files/migrated/children-of-bialystok/×¨×××× ×¢××× - ×××× ××××××¡×××§.mp4"
+    },
+    {
+      "name": "מצגת על ילדי ביאליסטוק ממחנה דרוסקנינקי",
+      "path": "/files/migrated/children-of-bialystok/××¦××ª ×¢× ×××× ××××××¡×××§ ×××× × ××¨××¡×§× ×× ×§×.pdf"
+    }
+  ]
 }

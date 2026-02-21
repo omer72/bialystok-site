@@ -90,9 +90,12 @@ export default function AdminPostEditor() {
           files: post.files || [],
           imageDisplayMode: post.imageDisplayMode || 'gallery',
         });
+      } else {
+        setMessage('Post not found');
       }
-    } catch {
-      // error loading
+    } catch (err) {
+      console.error('Error loading post:', err);
+      setMessage(`Error loading post: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
   };
 

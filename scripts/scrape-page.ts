@@ -271,9 +271,16 @@ async function scrapePage(url: string) {
       if (!src) return;
       if (imgSeen[src]) return;
 
-      // Skip only obvious non-content images
+      // Skip non-content images
       if (src.indexOf('negishim.com') !== -1 || src.indexOf('linguist-flags') !== -1 || src.indexOf('parastorage') !== -1) return;
       if (src.indexOf('favicon') !== -1) return;
+
+      // Skip common social media icon patterns and footer icons
+      if (src.match(/(icon|social|share|button|footer).*\.(png|svg)/i)) return;
+      if (src.match(/w_\d{1,2}[,x]/i) || src.match(/,h_\d{1,2}[,/]/i)) return; // Small icon dimensions
+
+      // Skip known icon library markers
+      if (src.indexOf('/static.') !== -1 && (src.indexOf('social') !== -1 || src.indexOf('icon') !== -1)) return;
 
       imgSeen[src] = true;
       images.push(src);
@@ -392,12 +399,23 @@ async function scrapePage(url: string) {
     // Skip all non-wixstatic images
     if (!img.includes('wixstatic')) return false;
 
-    // Skip social media icons (Instagram, Facebook, YouTube, Twitter - usually smaller/icon-sized)
-    if (img.includes('8d6893') || img.includes('e316f5') || img.includes('a1b09f') || img.includes('23fd2d')) return false;
+    // Skip known social media icon hashes (Instagram, Facebook, YouTube, Twitter, LinkedIn, etc.)
+    const iconHashes = ['8d6893', 'e316f5', 'a1b09f', '23fd2d', '5eeb4e', 'a71529', '175dcbd', '22f9e86', 'f6e43d'];
+    if (iconHashes.some(hash => img.includes(hash))) return false;
 
-    // Skip accessibility and small UI elements
+    // Skip language flags, accessibility icons, and UI buttons
     if (img.includes('negishim.com') || img.includes('accessibility') || img.includes('linguist-flags')) return false;
     if (img.match(/flags.*\.png/i) || img.match(/menu_18|font_18|contrast|power_off/)) return false;
+
+    // Skip common social icon patterns (small sizes, icon file patterns)
+    if (img.match(/\/(icon|social|share|button).*\.(png|svg)/i)) return false;
+    if (img.match(/w_\d{1,2}[,x]h_\d{1,2}/i)) return false; // Skip very small dimensions (less than 100x100)
+
+    // Skip if URL contains parameters indicating small icon size
+    const params = new URL(img).searchParams;
+    const width = parseInt(params.get('w') || params.get('width') || '0', 10);
+    const height = parseInt(params.get('h') || params.get('height') || '0', 10);
+    if ((width > 0 && width < 100) || (height > 0 && height < 100)) return false;
 
     // Keep significant wixstatic images (content photos, documents)
     return true;

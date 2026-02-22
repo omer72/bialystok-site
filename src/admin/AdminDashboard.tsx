@@ -39,7 +39,9 @@ export default function AdminDashboard() {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
-        setPosts(await res.json());
+        const data: PostData[] = await res.json();
+        data.sort((a, b) => (a.title?.he || '').localeCompare(b.title?.he || '', 'he'));
+        setPosts(data);
       }
     } catch {
       // error

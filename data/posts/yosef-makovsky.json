@@ -9,7 +9,7 @@
   "date": "2026-02-12",
   "author": "migrated",
   "excerpt": {
-    "he": "יוסף מקובסקי",
+    "he": "סיפור חייו של יוסף מקובסקי שניצל ע\"י קפיצה מהרכבת לאושוויץ.",
     "en": ""
   },
   "content": {
@@ -17,10 +17,15 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/yosef-makovsky/yosef-makovsky-1.jpg",
-    "/images/migrated/yosef-makovsky/yosef-makovsky-2.jpg"
+    "/images/posts/1771742925264-119609946.png"
   ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "יוסף מקובסקי -קורות חיים ",
+      "path": "/files/migrated/yosef-makovsky/×××¡×£ ××§×××¡×§× -×§××¨××ª ×××× .pdf"
+    }
+  ]
 }

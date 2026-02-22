@@ -9,7 +9,7 @@
   "date": "2026-02-12",
   "author": "migrated",
   "excerpt": {
-    "he": "זאב בלגלי",
+    "he": "עדות זאב בלגלי שנמנה על \"ילדי ביאליסטוק\" שנשלחו ערב המלחמה למחנה קיץ בדרוסקניקי (ליטא) וכך ניצלו. זאב מספר גם על דרכו לארץ ועל רצח אביו.",
     "en": ""
   },
   "content": {
@@ -17,10 +17,31 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/zeev-balgli/zeev-balgli-1.jpg",
-    "/images/migrated/zeev-balgli/zeev-balgli-2.jpg"
+    "/images/posts/1771743018289-555974590.png"
   ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "עדותו של זאב בלגלי",
+      "path": "/files/migrated/zeev-balgli/×¢×××ª× ×©× ××× ×××××.pdf"
+    },
+    {
+      "name": "תמונות של זאב בלגלי",
+      "path": "/files/migrated/zeev-balgli/×ª××× ××ª ×©× ××× ×××××.pdf"
+    },
+    {
+      "name": "זאב בלגלי מספר על אביו משה בן שבתאי בלגלי",
+      "path": "/files/migrated/zeev-balgli/××× ××××× ××¡×¤×¨ ×¢× ×××× ××©× ×× ×©××ª×× ×××××.pdf"
+    },
+    {
+      "name": "העפלה-זאב בלגלי",
+      "path": "/files/migrated/zeev-balgli/××¢×¤××-××× ×××××.pdf"
+    },
+    {
+      "name": "זאב בלגלי- סיפור ילדי ביאליסטוק",
+      "path": "/files/migrated/zeev-balgli/××× ×××××- ×¡××¤××¨ ×××× ××××××¡×××§.pdf"
+    }
+  ]
 }

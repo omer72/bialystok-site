@@ -9,7 +9,7 @@
   "date": "2026-02-12",
   "author": "migrated",
   "excerpt": {
-    "he": "שמחה לונדון",
+    "he": "סיפור חייו של שמחה לונדון שגדל בביאליסטוק ושניצל בזכות גיוסו לצבא האדום מעט לפני פלישת הגרמנים.",
     "en": ""
   },
   "content": {
@@ -17,10 +17,15 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/simcha-london/simcha-london-1.jpg",
-    "/images/migrated/simcha-london/simcha-london-2.jpg"
+    "/images/posts/1771742739003-594244555.png"
   ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "שמחה לונדון",
+      "path": "/files/migrated/simcha-london/×©××× ××× ×××.pdf"
+    }
+  ]
 }

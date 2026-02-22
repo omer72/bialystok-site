@@ -9,7 +9,7 @@
   "date": "2026-02-12",
   "author": "migrated",
   "excerpt": {
-    "he": "יעקוב מקובסקי",
+    "he": "סיפור חייו של יעקוב מקובסקי שנמלט מגטו ביאליסטוק לאחר האקציה הראשונה של פברואר 1943 והצטרף לשורות הפרטיזנים ביערות.",
     "en": ""
   },
   "content": {
@@ -17,10 +17,15 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/yaakov-makovsky/yaakov-makovsky-1.jpg",
-    "/images/migrated/yaakov-makovsky/yaakov-makovsky-2.jpg"
+    "/images/posts/1771742815013-460841650.png"
   ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "קורות יעקב מקובסקי 3 23",
+      "path": "/files/migrated/yaakov-makovsky/×§××¨××ª ××¢×§× ××§×××¡×§× 3 23.pdf"
+    }
+  ]
 }

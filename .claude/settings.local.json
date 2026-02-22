@@ -41,7 +41,9 @@
       "Bash(__NEW_LINE_ecd5e3b722651669__ echo \"✅ Removed moshe-hassid.json and nahum-tzemach.json \\(contained 404 pages\\)\")",
       "Bash(__NEW_LINE_9af928ce3f15ae1c__ git log --oneline -5)",
       "Bash(npm run scrape-single:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(/tmp/fix_shraga.js:*)",
+      "Bash(node:*)"
     ]
   }
 }

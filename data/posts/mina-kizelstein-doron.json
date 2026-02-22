@@ -17,11 +17,19 @@
     "en": ""
   },
   "images": [
-    "/images/migrated/mina-kizelstein-doron/mina-kizelstein-doron-1.jpg",
-    "/images/migrated/mina-kizelstein-doron/mina-kizelstein-doron-2.jpg"
+    "/images/posts/1771704334666-415683065.png"
   ],
   "videos": [],
-  "files": [],
+  "files": [
+    {
+      "name": "מינה דורן",
+      "path": "/files/migrated/mina-kizelstein-doron/××× × ×××¨×.pdf"
+    },
+    {
+      "name": "מינה קיזלשטיין -תרגום ספר 4 יהודי ביאליסטוק",
+      "path": "/files/migrated/mina-kizelstein-doron/××× × ×§××××©×××× -×ª×¨××× ×¡×¤×¨ 4 ××××× ××××××¡×××§.pdf"
+    }
+  ],
   "parentPage": "survivor-stories",
   "imageDisplayMode": "gallery"
 }

@@ -289,13 +289,16 @@ export default function AdminPostEditor() {
         {/* Slug, Category, Date, Author */}
         <div className="form-row">
           <div className="form-group">
-            <label className="form-label">Slug / ID</label>
+            <label className="form-label">
+              Slug / ID {id && <span style={{ fontSize: '0.85em', color: 'var(--color-text-muted)' }}>(read-only)</span>}
+            </label>
             <input
               className="form-input"
               value={form.slug}
               onChange={(e) => setForm({ ...form, slug: e.target.value, id: e.target.value })}
               dir="ltr"
               disabled={!!id}
+              title={id ? 'Slug cannot be changed when editing existing posts' : 'Auto-generated from English title'}
             />
           </div>
           <div className="form-group">

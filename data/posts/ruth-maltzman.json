@@ -13,11 +13,19 @@
     "en": ""
   },
   "excerpt": {
-    "he": "רות מלצמן",
+    "he": "סיפורה האישי של רות מלצמן אשר נמלטה מגטו ביאליסטוק ושרדה במסתור.",
     "en": ""
   },
   "parentPage": "survivor-stories",
   "imageDisplayMode": "gallery",
-  "images": [],
-  "videos": []
+  "images": [
+    "/images/posts/1771738921029-891842141.png"
+  ],
+  "videos": [],
+  "files": [
+    {
+      "name": "רות מלצמן",
+      "path": "/files/migrated/ruth-maltzman/×¨××ª ×××¦××.pdf"
+    }
+  ]
 }

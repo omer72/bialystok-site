@@ -13,11 +13,23 @@
     "en": ""
   },
   "excerpt": {
-    "he": "פנחס אדלר",
+    "he": "קורות פנחס אדלר שניצל בזכות נסיעתו ערב המלחמה, יחד עם אחיו נתן ,למחנה קיץ בדרוסקניקי (ליטא). לימים הפך לנווט בח\"א של פולין רוסיה וישראל.",
     "en": ""
   },
   "parentPage": "survivor-stories",
   "imageDisplayMode": "gallery",
-  "images": [],
-  "videos": []
+  "images": [
+    "/images/posts/1771738856908-451989954.png"
+  ],
+  "videos": [],
+  "files": [
+    {
+      "name": "ראיון עם פנחס אדלר ",
+      "path": "/files/migrated/pinchas-natan-adler/×¨×××× ×¢× ×¤× ××¡ ××××¨ .pdf"
+    },
+    {
+      "name": "ראיון עם פנחס אדלר  (1)",
+      "path": "/files/migrated/pinchas-natan-adler/×¨×××× ×¢× ×¤× ××¡ ××××¨  (1).pdf"
+    }
+  ]
 }

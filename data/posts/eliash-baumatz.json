@@ -9,15 +9,23 @@
   "date": "2026-02-21",
   "author": "migrated",
   "excerpt": {
-    "he": "אליאש באומץ",
+    "he": "סיפור חייו של אליאש באומץ אשר התגורר בביאליסטוק, היה בגטו, נמלט ליערות והקים עם חברים מהגטו קבוצת פרטיזנים.",
     "en": ""
   },
   "content": {
     "he": "",
     "en": ""
   },
-  "images": [],
+  "images": [
+    "/images/posts/1771704457828-453785864.png"
+  ],
   "videos": [],
   "parentPage": "survivor-stories",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "אליאש באומץ ",
+      "path": "/files/migrated/eliash-baumatz/×××××© ×××××¥ .pdf"
+    }
+  ]
 }

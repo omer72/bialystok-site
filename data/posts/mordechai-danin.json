@@ -13,11 +13,17 @@
     "en": ""
   },
   "excerpt": {
-    "he": "הסופר מרדכי דנין",
+    "he": "מספר כתבות על ביאליסטוק שפירסם הסופר מרדכי דנין בעיתון \"פארווערטס\".",
     "en": ""
   },
   "parentPage": "survivor-stories",
   "imageDisplayMode": "gallery",
   "images": [],
-  "videos": []
+  "videos": [],
+  "files": [
+    {
+      "name": "מרדכי דנין-מתוך ספרו מעל אבנים נקומות",
+      "path": "/files/migrated/mordechai-danin/××¨××× ×× ××-××ª×× ×¡×¤×¨× ××¢× ××× ×× × ×§××××ª.pdf"
+    }
+  ]
 }

@@ -128,9 +128,9 @@ export default function Navbar() {
         </ul>
 
         <div className="navbar-social">
-          <a href="https://www.instagram.com/bialystok_israel/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
-          <a href="https://www.facebook.com/profile.php?id=100064773498498" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
-          <a href="https://www.youtube.com/@user-fk9ue3ds7g" target="_blank" rel="noopener" aria-label="YouTube">🎬</a>
+          {/* <a href="https://www.instagram.com/bialystok_israel/" target="_blank" rel="noopener" aria-label="Instagram">📷</a> */}
+          <a href="https://www.facebook.com/profile.php?id=100082041019277" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+          {/* <a href="https://www.youtube.com/@user-fk9ue3ds7g" target="_blank" rel="noopener" aria-label="YouTube">🎬</a> */}
         </div>
       </div>
     </nav>

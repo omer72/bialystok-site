@@ -68,11 +68,16 @@ export default function AdminPostEditor() {
     }
   }, [id]);
 
+  useEffect(() => {
+    console.log('DEBUG: Form state updated:', form);
+  }, [form]);
+
   const loadExisting = async (postId: string) => {
     try {
       const post = await apiGet<PostData>(`/posts/${postId}`);
+      console.log('DEBUG: API response post:', post);
       if (post) {
-        setForm({
+        const newForm = {
           id: post.id,
           slug: post.slug,
           titleHe: post.title?.he || '',
@@ -89,7 +94,9 @@ export default function AdminPostEditor() {
           images: post.images || [],
           files: post.files || [],
           imageDisplayMode: post.imageDisplayMode || 'gallery',
-        });
+        };
+        console.log('DEBUG: Setting form to:', newForm);
+        setForm(newForm);
       } else {
         setMessage('Post not found');
       }

@@ -298,7 +298,7 @@ export default function AdminPostEditor() {
             <input
               className="form-input"
               value={form.slug}
-              onChange={(e) => setForm({ ...form, slug: e.target.value, id: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value, id: e.target.value }))}
               dir="ltr"
               disabled={!!id}
               title={id ? 'Slug cannot be changed when editing existing posts' : 'Auto-generated from English title'}
@@ -325,7 +325,7 @@ export default function AdminPostEditor() {
               className="form-input"
               type="date"
               value={form.date}
-              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, date: e.target.value }))}
             />
           </div>
           <div className="form-group">
@@ -333,7 +333,7 @@ export default function AdminPostEditor() {
             <input
               className="form-input"
               value={form.author}
-              onChange={(e) => setForm({ ...form, author: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, author: e.target.value }))}
               dir="ltr"
             />
           </div>
@@ -346,7 +346,7 @@ export default function AdminPostEditor() {
             <textarea
               className="form-textarea"
               value={form.excerptHe}
-              onChange={(e) => setForm({ ...form, excerptHe: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, excerptHe: e.target.value }))}
               rows={2}
               dir="rtl"
             />
@@ -356,7 +356,7 @@ export default function AdminPostEditor() {
             <textarea
               className="form-textarea"
               value={form.excerptEn}
-              onChange={(e) => setForm({ ...form, excerptEn: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, excerptEn: e.target.value }))}
               rows={2}
               dir="ltr"
             />
@@ -368,7 +368,7 @@ export default function AdminPostEditor() {
           <label className="form-label">{t('admin.contentHe')}</label>
           <ReactQuill
             value={form.contentHe}
-            onChange={(value) => setForm({ ...form, contentHe: value })}
+            onChange={(value) => setForm((prev) => ({ ...prev, contentHe: value }))}
             theme="snow"
             modules={{
               toolbar: [
@@ -389,7 +389,7 @@ export default function AdminPostEditor() {
           <label className="form-label">{t('admin.contentEn')}</label>
           <ReactQuill
             value={form.contentEn}
-            onChange={(value) => setForm({ ...form, contentEn: value })}
+            onChange={(value) => setForm((prev) => ({ ...prev, contentEn: value }))}
             theme="snow"
             modules={{
               toolbar: [
@@ -446,7 +446,7 @@ export default function AdminPostEditor() {
           <select
             className="form-select"
             value={form.imageDisplayMode}
-            onChange={(e) => setForm({ ...form, imageDisplayMode: e.target.value as 'gallery' | 'carousel' })}
+            onChange={(e) => setForm((prev) => ({ ...prev, imageDisplayMode: e.target.value as 'gallery' | 'carousel' }))}
           >
             <option value="gallery">גלריה (רשת) / Gallery (Grid)</option>
             <option value="carousel">קרוסלה / Carousel (Slider)</option>

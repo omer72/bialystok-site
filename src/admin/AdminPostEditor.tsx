@@ -42,14 +42,7 @@ export default function AdminPostEditor() {
   const [videoInput, setVideoInput] = useState('');
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
-
-  // Track component lifecycle
-  useEffect(() => {
-    console.log('DEBUG: Component mounted/updated');
-    return () => {
-      console.log('DEBUG: Component will unmount');
-    };
-  }, []);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [form, setForm] = useState<PostFormData>({
     id: '',
@@ -72,6 +65,7 @@ export default function AdminPostEditor() {
 
   const loadExisting = useCallback(async (postId: string) => {
     try {
+      console.log('DEBUG: loadExisting called with postId:', postId);
       const post = await apiGet<PostData>(`/posts/${postId}`);
       console.log('DEBUG: API response post:', post);
       if (post) {
@@ -95,6 +89,8 @@ export default function AdminPostEditor() {
         };
         console.log('DEBUG: Setting form to:', newForm);
         setForm(newForm);
+        setIsLoaded(true);
+        console.log('DEBUG: Set isLoaded to true');
       } else {
         setMessage('Post not found');
       }
@@ -105,22 +101,11 @@ export default function AdminPostEditor() {
   }, []);
 
   useEffect(() => {
-    console.log('DEBUG: useEffect triggered, id =', id);
-    if (id) {
-      console.log('DEBUG: Calling loadExisting with id =', id);
+    if (id && !isLoaded) {
+      console.log('DEBUG: Loading post with id =', id);
       loadExisting(id);
-    } else {
-      console.log('DEBUG: id is falsy, not loading');
     }
-
-    return () => {
-      console.log('DEBUG: useEffect cleanup called, id =', id);
-    };
-  }, [id, loadExisting]); // eslint-disable-next-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    console.log('DEBUG: Form state updated:', form);
-  }, [form]);
+  }, [id, isLoaded, loadExisting]);
 
   const generateSlug = (title: string) => {
     return title

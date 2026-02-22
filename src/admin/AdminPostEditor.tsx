@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent, useRef } from 'react';
+import { useState, useEffect, FormEvent, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { API_BASE, apiGet, uploadImage, uploadPDF, getAdminToken } from '../utils/api';
@@ -62,21 +62,7 @@ export default function AdminPostEditor() {
     imageDisplayMode: 'gallery',
   });
 
-  useEffect(() => {
-    console.log('DEBUG: useEffect triggered, id =', id);
-    if (id) {
-      console.log('DEBUG: Calling loadExisting with id =', id);
-      loadExisting(id);
-    } else {
-      console.log('DEBUG: id is falsy, not loading');
-    }
-  }, [id]);
-
-  useEffect(() => {
-    console.log('DEBUG: Form state updated:', form);
-  }, [form]);
-
-  const loadExisting = async (postId: string) => {
+  const loadExisting = useCallback(async (postId: string) => {
     try {
       const post = await apiGet<PostData>(`/posts/${postId}`);
       console.log('DEBUG: API response post:', post);
@@ -108,7 +94,21 @@ export default function AdminPostEditor() {
       console.error('Error loading post:', err);
       setMessage(`Error loading post: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    console.log('DEBUG: useEffect triggered, id =', id);
+    if (id) {
+      console.log('DEBUG: Calling loadExisting with id =', id);
+      loadExisting(id);
+    } else {
+      console.log('DEBUG: id is falsy, not loading');
+    }
+  }, [id, loadExisting]);
+
+  useEffect(() => {
+    console.log('DEBUG: Form state updated:', form);
+  }, [form]);
 
   const generateSlug = (title: string) => {
     return title
@@ -120,7 +120,6 @@ export default function AdminPostEditor() {
   };
 
   const handleTitleChange = (value: string, lang: 'he' | 'en') => {
-    console.log('DEBUG: handleTitleChange called, lang =', lang, ', value =', value.substring(0, 20));
     setForm((prev) => {
       const updated = { ...prev, [lang === 'he' ? 'titleHe' : 'titleEn']: value };
       if (!id) {

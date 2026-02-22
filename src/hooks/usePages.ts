@@ -35,7 +35,10 @@ export function usePages() {
 
   const fetchPages = async () => {
     try {
-      const res = await fetch(`${API_BASE}/pages`);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3000);
+      const res = await fetch(`${API_BASE}/pages`, { signal: controller.signal });
+      clearTimeout(timeout);
       if (res.ok) {
         const data = await res.json();
         setPages(data);

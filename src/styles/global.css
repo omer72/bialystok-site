@@ -97,6 +97,25 @@ img {
   color: var(--color-text-light);
 }
 
+.section-with-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.section-with-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.section-with-bg > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .section-dark .section-title,
 .section-dark h1,
 .section-dark h2,

@@ -9,7 +9,10 @@ export default function HomePage() {
     <div className="home-page">
       <HeroSection />
 
-      <section className="section section-dark">
+      <section
+        className="section section-dark section-with-bg"
+        style={{ backgroundImage: 'url(/images/home.jpg)' }}
+      >
         <div className="container">
           <h2 className="section-title">{t('home.whoWeAre')}</h2>
           <div className="home-text">
@@ -25,9 +28,7 @@ export default function HomePage() {
         <div className="container">
           <h2 className="section-title">{t('home.galleryTitle')}</h2>
           <div className="home-gallery">
-            <p className="text-center text-muted">
-              {t('home.galleryDescription')}
-            </p>
+            
           <ImageCarousel
             images={[
               '/images/gallery-1.jpg',

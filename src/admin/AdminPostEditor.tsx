@@ -63,8 +63,12 @@ export default function AdminPostEditor() {
   });
 
   useEffect(() => {
+    console.log('DEBUG: useEffect triggered, id =', id);
     if (id) {
+      console.log('DEBUG: Calling loadExisting with id =', id);
       loadExisting(id);
+    } else {
+      console.log('DEBUG: id is falsy, not loading');
     }
   }, [id]);
 
@@ -116,6 +120,7 @@ export default function AdminPostEditor() {
   };
 
   const handleTitleChange = (value: string, lang: 'he' | 'en') => {
+    console.log('DEBUG: handleTitleChange called, lang =', lang, ', value =', value.substring(0, 20));
     setForm((prev) => {
       const updated = { ...prev, [lang === 'he' ? 'titleHe' : 'titleEn']: value };
       if (!id) {

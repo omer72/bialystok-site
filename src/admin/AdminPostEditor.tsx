@@ -65,9 +65,7 @@ export default function AdminPostEditor() {
 
   const loadExisting = useCallback(async (postId: string) => {
     try {
-      console.log('DEBUG: loadExisting called with postId:', postId);
       const post = await apiGet<PostData>(`/posts/${postId}`);
-      console.log('DEBUG: API response post:', post);
       if (post) {
         const newForm = {
           id: post.id,
@@ -87,10 +85,8 @@ export default function AdminPostEditor() {
           files: post.files || [],
           imageDisplayMode: post.imageDisplayMode || 'gallery',
         };
-        console.log('DEBUG: Setting form to:', newForm);
         setForm(newForm);
         setIsLoaded(true);
-        console.log('DEBUG: Set isLoaded to true');
       } else {
         setMessage('Post not found');
       }
@@ -102,10 +98,9 @@ export default function AdminPostEditor() {
 
   useEffect(() => {
     if (id && !isLoaded) {
-      console.log('DEBUG: Loading post with id =', id);
       loadExisting(id);
     }
-  }, [id]); // Only depend on id, not isLoaded to prevent circular re-runs
+  }, [id, loadExisting]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const generateSlug = (title: string) => {
     return title

@@ -43,6 +43,14 @@ export default function AdminPostEditor() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
 
+  // Track component lifecycle
+  useEffect(() => {
+    console.log('DEBUG: Component mounted/updated');
+    return () => {
+      console.log('DEBUG: Component will unmount');
+    };
+  }, []);
+
   const [form, setForm] = useState<PostFormData>({
     id: '',
     slug: '',
@@ -104,7 +112,11 @@ export default function AdminPostEditor() {
     } else {
       console.log('DEBUG: id is falsy, not loading');
     }
-  }, [id, loadExisting]);
+
+    return () => {
+      console.log('DEBUG: useEffect cleanup called, id =', id);
+    };
+  }, [id, loadExisting]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     console.log('DEBUG: Form state updated:', form);

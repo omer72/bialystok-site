@@ -105,7 +105,7 @@ export default function AdminPostEditor() {
       console.log('DEBUG: Loading post with id =', id);
       loadExisting(id);
     }
-  }, [id, isLoaded, loadExisting]);
+  }, [id]); // Only depend on id, not isLoaded to prevent circular re-runs
 
   const generateSlug = (title: string) => {
     return title

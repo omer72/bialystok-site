@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import HeroSection from '../components/HeroSection';
+import ImageCarousel from '../components/ImageCarousel';
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -25,8 +26,20 @@ export default function HomePage() {
           <h2 className="section-title">{t('home.galleryTitle')}</h2>
           <div className="home-gallery">
             <p className="text-center text-muted">
-              {t('common.noContent')}
+              {t('home.galleryDescription')}
             </p>
+          <ImageCarousel
+            images={[
+              '/images/gallery-1.jpg',
+              '/images/gallery-2.jpg',
+              '/images/gallery-3.jpg',
+              '/images/gallery-4.jpg',
+              '/images/gallery-5.jpg',
+              '/images/gallery-6.jpg',
+              '/images/gallery-7.jpg',
+            ]}
+            alt="Gallery"
+          />
           </div>
         </div>
       </section>

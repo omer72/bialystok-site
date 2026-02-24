@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bialystoksite.netlify.app/sitemap.xml

@@ -488,7 +488,7 @@ img {
   text-align: center;
   padding-top: var(--space-6);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-text-muted);
+  color: #9ca3af;
   font-size: var(--font-size-sm);
 }
 
@@ -932,22 +932,25 @@ img {
 }
 
 .carousel-dot {
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.7);
   background: transparent;
   cursor: pointer;
   padding: 0;
   transition: background var(--transition-fast);
+  background-clip: content-box;
+  box-sizing: border-box;
+  padding: 6px;
 }
 
 .carousel-dot.active {
-  background: white;
+  background-color: white;
 }
 
 .carousel-dot:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .carousel-counter {

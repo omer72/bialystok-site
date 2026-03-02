@@ -6,7 +6,7 @@
     url('fonts/NagishLi.svg?wfk5w3#NagishLi') format('svg');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 .nagishli-icon-localize-logo:before {

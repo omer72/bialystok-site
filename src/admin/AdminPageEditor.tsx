@@ -52,7 +52,7 @@ export default function AdminPageEditor() {
     videos: [],
     images: [],
     imageDisplayMode: 'gallery',
-    showInNav: false,
+    showInNav: true,
     navOrder: 99,
   });
 

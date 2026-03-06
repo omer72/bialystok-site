@@ -43,7 +43,28 @@
       "Bash(npm run scrape-single:*)",
       "Bash(npm run:*)",
       "Bash(/tmp/fix_shraga.js:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(for:*)",
+      "Bash(do jq -r '.slug, .category' \"$file\")",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(do jq -r 'select\\(.slug != null and .slug != \"\"\"\"\\) | \"\"\\\\\\(.slug\\)|\\\\\\(.category\\)\"\"' \"$file\")",
+      "Bash(find /Users/omere/projects/bialystok-site/data/posts -name \"*.json\" -exec sh -c 'jq \"\"{slug: .slug, category: .category}\"\" \"\"$1\"\" 2>/dev/null' _ {} ;)",
+      "Bash(brew list)",
+      "Read(//Users/omere/projects/bialystok-site/**)",
+      "WebFetch(domain:www.liatleshem.com)",
+      "Bash(npm install)",
+      "Bash(npm install -D tailwindcss @tailwindcss/vite)",
+      "Bash(npm install react-router-dom framer-motion lucide-react)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(lsof -ti:5173)",
+      "Bash(lsof -ti:5180)",
+      "Bash(xargs kill)",
+      "Bash(lsof -ti:5181)",
+      "Bash(npm install puppeteer-core)",
+      "WebFetch(domain:soundcloud.com)",
+      "Bash(git init)",
+      "Bash(git remote add origin https://github.com/omer72/liatleshem-site.git)"
     ]
   }
 }

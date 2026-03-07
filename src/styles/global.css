@@ -404,7 +404,7 @@ img {
 
 /* ======================== Hero ======================== */
 .hero {
-  min-height: 500px;
+  min-height: 300px;
   background-size: cover;
   background-position: center;
   background-color: var(--color-primary);
@@ -441,7 +441,7 @@ img {
 }
 
 @media (max-width: 768px) {
-  .hero { min-height: 350px; }
+  .hero { min-height: 250px; }
   .hero-title { font-size: var(--font-size-2xl); }
   .hero-logo { font-size: 3rem; }
 }

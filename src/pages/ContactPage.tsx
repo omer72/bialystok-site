@@ -21,7 +21,7 @@ export default function ContactPage() {
             <h3>{t('contact.address')}</h3>
             <p>
               {getLocalizedText({
-                he: 'סובניצו 17, יהוד, ישראל 5621108',
+                he: 'טננבוים 17, יהוד, ישראל 5621108',
                 en: '17 Sovnitzo, Yehud, Israel 5621108',
               })}
             </p>
@@ -36,7 +36,7 @@ export default function ContactPage() {
         </div>
 
         <div className="contact-map">
-          <GoogleMap lat={32.0333} lng={34.8833} />
+          <GoogleMap lat={32.035435} lng={34.8919807} />
         </div>
       </div>
     </div>

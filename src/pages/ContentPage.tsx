@@ -125,7 +125,7 @@ export default function ContentPage() {
             )}
 
             {content.images && content.images.length > 0 && (
-              <ImageGallery images={content.images} alt={getLocalizedText(content.title)} displayMode={content.imageDisplayMode} />
+              <ImageGallery images={content.images} alt={getLocalizedText(content.title)} displayMode={content.imageDisplayMode} zoomable={content.slug === 'maps'} />
             )}
           </div>
         ) : (

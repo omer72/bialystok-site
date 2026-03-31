@@ -7,11 +7,10 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <HeroSection />
+      <HeroSection imageUrl="/images/home.jpg" />
 
       <section
-        className="section section-dark section-with-bg"
-        style={{ backgroundImage: 'url(/images/home.jpg)' }}
+        className="section section-dark"
       >
         <div className="container">
           <h2 className="section-title">{t('home.whoWeAre')}</h2>

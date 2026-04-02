@@ -101,8 +101,9 @@ export default function PostDetailPage() {
               <h3>{getLocalizedText({ he: 'קבצים', en: 'Files' })}</h3>
               {post.files.map((file: { name: string; path?: string }, i: number) => {
                 const isPdf = file.path && file.path.toLowerCase().endsWith('.pdf');
+                const isPptx = file.path && /\.(pptx?|ppt)$/i.test(file.path);
                 const isVideo = file.path && /\.(mp4|webm|ogg)$/i.test(file.path);
-                return isPdf ? (
+                return isPdf || isPptx ? (
                   <div key={i} className="file-preview">
                     <iframe
                       src={`https://docs.google.com/viewer?url=${encodeURIComponent(file.path!)}&embedded=true`}

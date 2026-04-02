@@ -521,7 +521,7 @@ export default function AdminPostEditor() {
           <input
             ref={pdfInputRef}
             type="file"
-            accept=".pdf,.mp4,.webm,.ogg,.wav,.mp3"
+            accept=".pdf,.pptx,.ppt,.mp4,.webm,.ogg,.wav,.mp3"
             multiple
             onChange={handlePDFUpload}
             style={{ display: 'none' }}

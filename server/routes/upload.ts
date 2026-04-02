@@ -53,6 +53,8 @@ const fileUpload = multer({
   fileFilter: (_req, file, cb) => {
     const allowedMimes = [
       'application/pdf',
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation', // pptx
+      'application/vnd.ms-powerpoint', // ppt
       'video/mp4',
       'video/webm',
       'video/ogg',
@@ -62,7 +64,7 @@ const fileUpload = multer({
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Only PDF, video, and audio files are allowed'));
+      cb(new Error('Only PDF, PPTX, video, and audio files are allowed'));
     }
   },
 });

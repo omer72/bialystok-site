@@ -13,7 +13,7 @@
     "en": ""
   },
   "content": {
-    "he": "<pre class=\"ql-syntax ql-direction-rtl\" spellcheck=\"false\"> &lt;/iframe&gt;&lt;iframe src=\"https://www.zchor.org/bialystok/bialystok.htm\"&gt;\n</pre><p class=\"ql-align-right\"><a href=\"http://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(255, 255, 255); background-color: initial;\"><strong>טכסים</strong></a></p><h1 class=\"ql-direction-rtl ql-align-right\"><span style=\"background-color: initial;\"> </span><a href=\"https://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: initial;\"><u>טקסים</u></a></h1><h1><br></h1>",
+    "he": "<iframe width=\"560\" height=\"315\" src=\"https://www.zchor.org/bialystok/bialystok.htm\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
     "en": ""
   },
   "images": [],
@@ -21,9 +21,5 @@
   "parentPage": "events",
   "imageDisplayMode": "gallery",
   "files": [
-    {
-      "name": "מצגת לטכס 2017",
-      "path": "http://bialystok-site.onrender.com/files/migrated/past-ceremonies/5eeb4e_7a86c6883dff474b8d664e0cc0732e1a.pdf"
-    }
   ]
 }

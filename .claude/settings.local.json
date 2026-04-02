@@ -64,7 +64,16 @@
       "Bash(npm install puppeteer-core)",
       "WebFetch(domain:soundcloud.com)",
       "Bash(git init)",
-      "Bash(git remote add origin https://github.com/omer72/liatleshem-site.git)"
+      "Bash(git remote add origin https://github.com/omer72/liatleshem-site.git)",
+      "Bash(git credential-osxkeychain:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__performance_start_trace",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__list_network_requests",
+      "mcp__chrome-devtools__wait_for",
+      "mcp__chrome-devtools__evaluate_script"
     ]
   }
 }

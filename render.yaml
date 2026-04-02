@@ -16,3 +16,7 @@ services:
         value: 10000
       - key: CORS_ORIGIN
         value: https://bialystoksite.netlify.app
+      - key: GIT_TOKEN
+        sync: false  # GitHub personal access token - set in Render dashboard
+      - key: GIT_REPO
+        value: omer72/bialystok-site

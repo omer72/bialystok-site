@@ -2,6 +2,7 @@ import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
 import { verifyAdmin, generateToken } from '../middleware/auth.js';
+import { gitSync } from '../utils/gitSync.js';
 
 const router = Router();
 
@@ -83,6 +84,7 @@ router.post('/admin/posts', verifyAdmin, (req, res) => {
     const postFile = path.join(POSTS_DIR, `${postData.slug || postData.id}.json`);
     writeJson(postFile, postData);
     res.json({ success: true });
+    gitSync(`Add post: ${postData.slug || postData.id}`);
   } catch {
     res.status(500).json({ error: 'Failed to create post' });
   }
@@ -97,13 +99,16 @@ router.put('/admin/posts/:id', verifyAdmin, (req, res) => {
       const post = readJson(path.join(POSTS_DIR, f));
       if (post.id === req.params.id) {
         writeJson(path.join(POSTS_DIR, f), { ...post, ...postData });
-        return res.json({ success: true });
+        res.json({ success: true });
+        gitSync(`Update post: ${req.params.id}`);
+        return;
       }
     }
     // If not found, create new
     const postFile = path.join(POSTS_DIR, `${postData.slug || postData.id || req.params.id}.json`);
     writeJson(postFile, postData);
     res.json({ success: true });
+    gitSync(`Add post: ${req.params.id}`);
   } catch {
     res.status(500).json({ error: 'Failed to update post' });
   }
@@ -117,7 +122,9 @@ router.delete('/admin/posts/:id', verifyAdmin, (req, res) => {
       const post = readJson(path.join(POSTS_DIR, f));
       if (post.id === req.params.id) {
         fs.unlinkSync(path.join(POSTS_DIR, f));
-        return res.json({ success: true });
+        res.json({ success: true });
+        gitSync(`Delete post: ${req.params.id}`);
+        return;
       }
     }
     res.status(404).json({ error: 'Post not found' });
@@ -183,6 +190,7 @@ router.post('/pages', verifyAdmin, (req, res) => {
     }
 
     res.json({ success: true });
+    gitSync(`Add page: ${pageData?.id || 'unknown'}`);
   } catch (err) {
     res.status(500).json({ error: 'Failed to create page' });
   }
@@ -219,6 +227,7 @@ router.put('/pages/:id', verifyAdmin, (req, res) => {
     }
 
     res.json({ success: true });
+    gitSync(`Update page: ${req.params.id}`);
   } catch {
     res.status(500).json({ error: 'Failed to update' });
   }
@@ -242,6 +251,7 @@ router.delete('/pages/:id', verifyAdmin, (req, res) => {
     }
 
     res.json({ success: true });
+    gitSync(`Delete page: ${req.params.id}`);
   } catch {
     res.status(500).json({ error: 'Failed to delete' });
   }

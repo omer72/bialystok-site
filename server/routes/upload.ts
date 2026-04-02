@@ -3,6 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { verifyAdmin } from '../middleware/auth.js';
+import { gitSync } from '../utils/gitSync.js';
 
 const router = Router();
 
@@ -77,6 +78,7 @@ router.post('/upload', verifyAdmin, upload.single('image'), (req, res) => {
     ? `${baseUrl}${relativePath}`
     : relativePath;
   res.json({ path: filePath });
+  gitSync(`Upload image: ${req.file.filename}`);
 });
 
 router.post('/upload-pdf', verifyAdmin, fileUpload.single('pdf'), (req, res) => {
@@ -94,6 +96,7 @@ router.post('/upload-pdf', verifyAdmin, fileUpload.single('pdf'), (req, res) => 
     ? `${baseUrl}${relativePath}`
     : relativePath;
   res.json({ path: filePath });
+  gitSync(`Upload file: ${req.file.originalname} to ${postSlug}`);
 });
 
 export { router as uploadRouter };

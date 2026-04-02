@@ -23,5 +23,11 @@
   "videos": [
     "https://www.youtube.com/watch?si=YNu3tsGEwQLKvMc-&v=oNDHeXr-En0&feature=youtu.be"
   ],
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "5eeb4e_fec939f7d7c6430b89381324fc6fad3a",
+      "path": "http://bialystok-site.onrender.com/files/migrated/memorial-80-24-8/5eeb4e_fec939f7d7c6430b89381324fc6fad3a.pdf"
+    }
+  ]
 }

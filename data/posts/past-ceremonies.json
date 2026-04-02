@@ -13,13 +13,11 @@
     "en": ""
   },
   "content": {
-    "he": "<h1><br></h1>",
+    "he": "<p class=\"ql-align-right\"><br></p><p class=\"ql-align-right\"><a href=\"http://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(255, 255, 255); background-color: initial;\"><strong>טכסים</strong></a></p><h1 class=\"ql-direction-rtl ql-align-right\"><span style=\"background-color: initial;\">טכסי אזכרה ה-60 עד ה-72 : </span><a href=\"https://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: initial;\">טקסים</a></h1><h1><br></h1>",
     "en": ""
   },
   "images": [],
-  "videos": [
-    "https://www.youtube.com/watch?v=hdQAHO1Wbcc"
-  ],
+  "videos": [],
   "parentPage": "events",
   "imageDisplayMode": "gallery",
   "files": [

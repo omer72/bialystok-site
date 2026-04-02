@@ -1313,6 +1313,16 @@ img {
   color: var(--color-text);
 }
 
+.file-label-input {
+  font-weight: 500;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-base);
+  width: 100%;
+}
+
 .file-path {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);

@@ -109,7 +109,7 @@ export default function AdminDashboard() {
       });
 
       if (createRes.ok) {
-        navigate(`/admin/post-editor/${newId}`);
+        navigate(`/admin/post-editor/${newId}?copy=true`);
       } else {
         alert('Failed to duplicate');
       }

@@ -1,5 +1,5 @@
 import { useState, useEffect, FormEvent, useRef, useCallback } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { API_BASE, apiGet, uploadImage, uploadPDF, getAdminToken } from '../utils/api';
 import type { PostData } from '../hooks/usePages';
@@ -33,8 +33,37 @@ const CATEGORIES = [
   { value: 'content', label: 'תוכן כללי / General Content', parentPage: '' },
 ];
 
+const quillModules = {
+  toolbar: [
+    [{ 'header': [1, 2, 3, 4, false] }],
+    [{ 'size': ['small', false, 'large', 'huge'] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ 'color': [] }, { 'background': [] }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'indent': '-1' }, { 'indent': '+1' }],
+    [{ 'direction': 'rtl' }],
+    [{ 'align': [] }],
+    ['blockquote', 'code-block'],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+};
+
+const quillFormats = [
+  'header', 'size',
+  'bold', 'italic', 'underline', 'strike',
+  'color', 'background',
+  'script',
+  'list', 'indent', 'direction', 'align',
+  'blockquote', 'code-block',
+  'link', 'image', 'video',
+];
+
 export default function AdminPostEditor() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const isCopy = searchParams.get('copy') === 'true';
   const { t } = useTranslation();
   const navigate = useNavigate();
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -206,6 +235,13 @@ export default function AdminPostEditor() {
     }));
   };
 
+  const updateFileLabel = (index: number, name: string) => {
+    setForm((prev) => ({
+      ...prev,
+      files: prev.files.map((f, i) => (i === index ? { ...f, name } : f)),
+    }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
@@ -229,10 +265,11 @@ export default function AdminPostEditor() {
     };
 
     try {
-      const url = id
+      const slugChanged = isCopy && form.slug !== id;
+      const url = id && !slugChanged
         ? `${API_BASE}/admin/posts/${id}`
         : `${API_BASE}/admin/posts`;
-      const method = id ? 'PUT' : 'POST';
+      const method = id && !slugChanged ? 'PUT' : 'POST';
 
       const res = await fetch(url, {
         method,
@@ -244,6 +281,13 @@ export default function AdminPostEditor() {
       });
 
       if (res.ok) {
+        // If slug changed on a copy, delete the old copy
+        if (slugChanged && id) {
+          await fetch(`${API_BASE}/admin/posts/${id}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}` },
+          });
+        }
         setMessage(t('admin.saved'));
         setTimeout(() => navigate('/admin/dashboard'), 1500);
       } else {
@@ -293,15 +337,15 @@ export default function AdminPostEditor() {
         <div className="form-row">
           <div className="form-group">
             <label className="form-label">
-              Slug / ID {id && <span style={{ fontSize: '0.85em', color: 'var(--color-text-muted)' }}>(read-only)</span>}
+              Slug / ID {id && !isCopy && <span style={{ fontSize: '0.85em', color: 'var(--color-text-muted)' }}>(read-only)</span>}
             </label>
             <input
               className="form-input"
               value={form.slug}
               onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value, id: e.target.value }))}
               dir="ltr"
-              disabled={!!id}
-              title={id ? 'Slug cannot be changed when editing existing posts' : 'Auto-generated from English title'}
+              disabled={!!id && !isCopy}
+              title={id && !isCopy ? 'Slug cannot be changed when editing existing posts' : 'Auto-generated from English title'}
             />
           </div>
           <div className="form-group">
@@ -370,17 +414,8 @@ export default function AdminPostEditor() {
             value={form.contentHe}
             onChange={(value) => setForm((prev) => ({ ...prev, contentHe: value }))}
             theme="snow"
-            modules={{
-              toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['blockquote', 'code-block'],
-                [{ 'align': [] }],
-                ['link'],
-                ['clean']
-              ]
-            }}
+            modules={quillModules}
+            formats={quillFormats}
             placeholder="ניתן להשתמש ב-HTML..."
             style={{ direction: 'rtl', textAlign: 'right' }}
           />
@@ -391,17 +426,8 @@ export default function AdminPostEditor() {
             value={form.contentEn}
             onChange={(value) => setForm((prev) => ({ ...prev, contentEn: value }))}
             theme="snow"
-            modules={{
-              toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['blockquote', 'code-block'],
-                [{ 'align': [] }],
-                ['link'],
-                ['clean']
-              ]
-            }}
+            modules={quillModules}
+            formats={quillFormats}
             placeholder="HTML is supported..."
             style={{ direction: 'ltr', textAlign: 'left' }}
           />
@@ -512,7 +538,13 @@ export default function AdminPostEditor() {
               {form.files.map((file, i) => (
                 <div key={i} className="file-item">
                   <div className="file-info">
-                    <span className="file-name">{file.name}</span>
+                    <input
+                      type="text"
+                      className="file-label-input"
+                      value={file.name}
+                      onChange={(e) => updateFileLabel(i, e.target.value)}
+                      placeholder="תווית הקובץ / File label"
+                    />
                     <span className="file-path" dir="ltr">{file.path}</span>
                   </div>
                   <button

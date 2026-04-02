@@ -36,7 +36,17 @@ app.use(express.json());
 
 // Serve uploaded images and files
 app.use('/images', express.static(path.join(process.cwd(), 'public', 'images')));
-app.use('/files', express.static(path.join(process.cwd(), 'public', 'files')));
+app.use('/files', (req, res, next) => {
+  // Allow PDFs to be embedded in iframes from any origin
+  if (req.path.toLowerCase().endsWith('.pdf')) {
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'inline');
+    res.setHeader('X-Frame-Options', 'ALLOWALL');
+    res.removeHeader('X-Frame-Options');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  next();
+}, express.static(path.join(process.cwd(), 'public', 'files')));
 
 // API routes
 app.use('/api', adminRouter);

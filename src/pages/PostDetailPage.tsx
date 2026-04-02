@@ -104,7 +104,13 @@ export default function PostDetailPage() {
                 const isVideo = file.path && /\.(mp4|webm|ogg)$/i.test(file.path);
                 return isPdf ? (
                   <div key={i} className="file-preview">
-                    <iframe src={file.path} width="100%" height="600" style={{ border: 'none', borderRadius: '8px' }} title={file.name} />
+                    <object data={file.path} type="application/pdf" width="100%" height="600" style={{ borderRadius: '8px' }}>
+                      <p style={{ textAlign: 'center', padding: '2rem' }}>
+                        {getLocalizedText({ he: 'לא ניתן להציג את הקובץ בדפדפן.', en: 'Unable to display PDF in browser.' })}
+                        {' '}
+                        <a href={file.path} target="_blank" rel="noopener">{getLocalizedText({ he: 'לחצו להורדה', en: 'Click to download' })}</a>
+                      </p>
+                    </object>
                     <p><a href={file.path} target="_blank" rel="noopener">{file.name}</a></p>
                   </div>
                 ) : isVideo ? (

@@ -260,7 +260,7 @@ export default function AdminPostEditor() {
       content: { he: form.contentHe, en: form.contentEn },
       images: form.images,
       videos: form.videos,
-      files: form.files.length > 0 ? form.files : undefined,
+      files: form.files,
       imageDisplayMode: form.imageDisplayMode,
     };
 

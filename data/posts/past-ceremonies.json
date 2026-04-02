@@ -13,13 +13,12 @@
     "en": ""
   },
   "content": {
-    "he": "<iframe width=\"560\" height=\"315\" src=\"https://www.zchor.org/bialystok/bialystok.htm\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "he": "<p class=\"ql-align-right\"><a href=\"http://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: rgb(255, 255, 255); background-color: initial;\"><strong>טכסים</strong></a></p><h1 class=\"ql-direction-rtl ql-align-right\"><span style=\"background-color: initial;\"> לינק לעמוד : </span><a href=\"https://www.zchor.org/bialystok/bialystok.htm\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"background-color: initial;\"><u>טקסים</u></a></h1><h1><br></h1>",
     "en": ""
   },
   "images": [],
   "videos": [],
   "parentPage": "events",
   "imageDisplayMode": "gallery",
-  "files": [
-  ]
+  "files": []
 }

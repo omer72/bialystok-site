@@ -13,7 +13,7 @@
     "en": ""
   },
   "content": {
-    "he": "<h2>:נאום יו\"ר הארגון בטכס&nbsp;</h2>\n<h2><span><span>:<span><span>נאום ראש העיר ביאליסטוק בטכס&nbsp;<br/>\n&nbsp;</span></span></span></span></h2>\n<h2>&nbsp;:דברי יו\"ר הארגון בטכס קבלת אות יקיר העיר ביאליסטוק&nbsp;</h2>",
+    "he": "<h2><br></h2><h2>:נאום ראש העיר ביאליסטוק בטכס&nbsp;</h2><h2>&nbsp;</h2><h2>&nbsp;:דברי יו\"ר הארגון בטכס קבלת אות יקיר העיר ביאליסטוק&nbsp;</h2>",
     "en": ""
   },
   "images": [
@@ -21,5 +21,11 @@
   ],
   "videos": [],
   "parentPage": "events",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "נאום יו\"ר הארגון",
+      "path": "http://bialystok-site.onrender.com/files/migrated/memorial-80/5eeb4e_fec939f7d7c6430b89381324fc6fad3a.pdf"
+    }
+  ]
 }

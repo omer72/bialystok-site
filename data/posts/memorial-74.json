@@ -13,11 +13,19 @@
     "en": ""
   },
   "content": {
-    "he": "<h1>מצגת לטכס 2017:</h1>\n<h1>סרטון הטכס 2014:</h1>",
+    "he": "<h1><br></h1>",
     "en": ""
   },
   "images": [],
-  "videos": [],
+  "videos": [
+    "https://www.youtube.com/watch?v=hdQAHO1Wbcc"
+  ],
   "parentPage": "events",
-  "imageDisplayMode": "gallery"
+  "imageDisplayMode": "gallery",
+  "files": [
+    {
+      "name": "מצגת לטכס 2017",
+      "path": "http://bialystok-site.onrender.com/files/migrated/memorial-74/5eeb4e_7a86c6883dff474b8d664e0cc0732e1a.pdf"
+    }
+  ]
 }
